@@ -20,23 +20,26 @@
                                 <img class="card-img-top" src="{{ post.featured_image.url }}" alt="">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Adim: {{ post.author }}</p>
+                                    <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
                             <!-- Post detail link -->
                             <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
+                                
                             </a>
+                            <p class="card-text" id="news-body">{{ post.excerpt }}</p>
                             <!-- Read more ......................................... -->
                             <div class="post_body">
                                 {{ post.body|safe|truncatewords:"50"|linebreaks }}
-                                <a href="{% url 'post_detail' post.slug %}">read more</a>
+                                <a href="{% url 'post_detail'  post.slug %}">read more</a>
+                                <p class="card-test text-muted h6">{{ post.created_on}} <i class="far fa heart">
+                                    </i>
+                                    {{ post.number_of_likes }}</p>
                             </div>
                             <hr>
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa heart">
-                            </i>
-                                {{ post.number_of_likes }}</p>
+                            
+                            
                   </div>
                  </div>
             </div>

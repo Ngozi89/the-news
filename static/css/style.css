@@ -2,6 +2,10 @@ body {
     background-color: #F9FAFC;
 }
 
+.news-mix {
+    margin: 0 45px;
+}
+
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
@@ -10,11 +14,16 @@ body {
 }
 
 .red-o {
-    color: #E84610;
+    color: red;
+    font-size: 50px;
 }
 
-.thin {
-    font-weight: 300;
+.bold {
+    font-size: 30px;
+}
+
+.navbar-nav {
+    font-size: 22px;
 }
 
 .light-bg {
@@ -43,47 +52,42 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #ff0000;
 }
 
 .author {
-    color: white;
+    color: #fff;
     margin: 4px;
     text-transform: uppercase;
 }
-
+/* New headline ....................................... */
 .masthead {
     margin-top: 10px;
-    overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 33vh;
+    height: 43vh;
     width: 100%;
 }
 
+/* Remove .................................................... */
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: #ff0000;
+    color: #fff;
     position: relative;
 }
 
 .masthead-image {
     position: relative;
-    overflow: hidden;
+    
 }
 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
+.card-title {
+    font-size: 150%;
+}
+
+/* News Paragraph ................................... */
+.card-text {
+    margin-top: 80px;
 }
 /* Post link ................................................ */
 .post-link {
@@ -139,4 +143,11 @@ body {
     color: #E84610;
     background: transparent;
     border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-nav {
+        margin-left: 450px;
+    }
+
 }
