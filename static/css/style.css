@@ -110,6 +110,11 @@ body {
     color: lightgray;
 }
 /* Sign up button ............................................ */
+
+#register {
+    color: #ff0000;
+}
+
 .btn-signup {
     background-color: #eb0808;
     color: #fff;
@@ -118,11 +123,15 @@ body {
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: #ff0000;
+}
+
+.login-text {
+    font-size: 20px;
 }
 
 .link {
-    color: #23BBBB;
+    color: #ff0000;
     text-decoration: none;
 }
 
