@@ -31,7 +31,7 @@
                             <!-- Read more ......................................... -->
                             <div class="post_body">
                                 {{ post.body|safe|truncatewords:"50"|linebreaks }}
-                                <a href="{% url 'post_detail'  post.slug %}">read more</a>
+                                <a href="{% url 'post_detail'  post.slug %}">Read More</a>
                                 <p class="card-test text-muted h6">{{ post.created_on}} <i class="far fa heart">
                                     </i>
                                     {{ post.number_of_likes }}</p>

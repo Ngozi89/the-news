@@ -31,7 +31,11 @@ body {
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #ff0000;
+}
+
+.dark-bg i {
+    color: #F9FAFC;
 }
 
 .main-bg {
