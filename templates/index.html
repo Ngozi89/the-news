@@ -31,7 +31,7 @@
               <a href="{% url 'post_detail' post.slug %}" class="post-link">
                 <h2 class="card-title">{{ post.title }}</h2>
               </a>
-              <p class="card-text">{{ post.excerpt }}</p>
+
               <!-- Read more ......................................... -->
               <div class="post_body">
                 {{ post.excerpt|safe|truncatewords:"50"|linebreaks }}
