@@ -11,14 +11,12 @@
     - [As a **returning user**](#as-a-returning-user)
   - [UAC](#uac)
     - [Home Page](#home-page)
-      - [User Goal](#user-goal)
-      - [Website Goal](#website-goal)
     - [Sign Up Page](#sign-up-page)
+      - [User Goal:](#user-goal)
+      - [Website Goal:](#website-goal)
+    - [Sign In Page](#sign-in-page)
       - [User Goal:](#user-goal-1)
       - [Website Goal:](#website-goal-1)
-    - [Sign In Page](#sign-in-page)
-      - [User Goal:](#user-goal-2)
-      - [Website Goal:](#website-goal-2)
     - [Posts Page](#posts-page)
     - [Post Detail Page](#post-detail-page)
     - [Create/Update Post Page](#createupdate-post-page)
@@ -150,7 +148,7 @@ User Acceptance Criteria based on the user stories:
 - Addresses questions and doubts the first-time users might have and provides a registration form.
 - Presents opportunities for possible further actions
 
-#### User Goal
+* #### User Goal
 
     >
     > * Understand the main purpose of the website.
@@ -159,7 +157,7 @@ User Acceptance Criteria based on the user stories:
     > * Access social media.
     >
 
-#### Website Goal
+* #### Website Goal
 
     >
     > * Inform the user about the main purpose.
@@ -167,6 +165,7 @@ User Acceptance Criteria based on the user stories:
     > * Call to action.
     > * Initiate future engagement, such as following on social media
     > * Provide aesthetically pleasing user experience.
+    >
 
 ### Sign Up Page
 
