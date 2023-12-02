@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
