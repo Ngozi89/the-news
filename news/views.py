@@ -14,7 +14,6 @@ class PostList(generic.ListView):
 # Seperate the pages
     paginate_by = 6
 
-
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -82,6 +81,7 @@ class PostLike(View):
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+# Render list of post
 
 def about(request):
     return render(request, 'about.html')
