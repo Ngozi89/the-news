@@ -1,4 +1,7 @@
-# News Mix
+# News Mix Website (Milestone Project 4)
+![mockup](readme/site-responsive.png)
+
+[News Mix](https://thenews-527458e708d0.herokuapp.com/) is an online news reporter and social advocates dedicated to bringing you news and happening around the globe from African perspective.
 
 ## Table of contents
 
@@ -118,7 +121,7 @@ User Acceptance Criteria based on the user stories:
 
 <span id="uac5">4.</span> The website should have a registration form that allows users to create a personal account.
 
-<span id="uac31">5.</span> The website should admin panel.
+<span id="uac31">5.</span> The website should have admin panel.
 
 <span id="uac7">6.</span> The registration process should be fast and easy, but also secure, using encryption and other security measures.
 
@@ -147,6 +150,8 @@ User Acceptance Criteria based on the user stories:
 <span id="uac30">18.</span> The website should have a password reset feature that allows registered users to reset their password in case they forget it.
 
 <span id="uac31">19.</span> The website should provide feedback about the status of the processes.
+
+<span id="uac31">20.</span> The website should footer.
 
 ### Home Page
 
@@ -281,6 +286,12 @@ User Acceptance Criteria based on the user stories:
   > - Confirm with the user deletion of the post.
   > - Provide aesthetically pleasing user experience.
 
+### Footer ([uac 11](#uac11), [uac 12](#uac12), [uac 20](#uac20))
+
+![](readme/footer.png)
+
+The website's footer is designed to provide users with useful such as privacy policy which are important for users to be aware of as well social media link for users to follow and get more news update easy and faster.
+
 # Development Plan
 
 ## Agile design
@@ -409,6 +420,17 @@ When content is shared on social media, it includes a link back to the website. 
 | I want to be able to update and delete my posts. | This is still in progress
 | I want to be able to reset my password if I forget it. | Password reset is available for users who register with their email address.
 
+## Manual Testing
+
+I have tested this project code by
+- Pasting the code on PEP8 linter and no error found.
+- Tested after deployment on Code Institute Heroku terminal and it run successfully.
+
+![Models.py](readme/test-models.py.png)
+![views.py](readme/tested-views.py.png)
+![urls.py](readme/tested-urls.png)
+![admin.py](readme/tested-admin-file.png)
+
 ### Blog Host
 
 - Creates a new post.
@@ -463,3 +485,9 @@ This project was deployed using Code Institute's mock terminal for Heroku and th
 - Click on deploy at the top left side and select github to connect to github. Confirm your connection to github and search for the github repository name, click connect to link up the Heroku app creacted ealier with the repository.
 - Choose either automatic deploy or manual. I used manual which is deploy branch.
 - Allow the app to build until it shows successful then click view and it takes you to the deployed link.
+
+# Credits
+
+- Matt Rudge for I think before I blog workthrough project.
+- News Mix news blog was built with knowledge from love sandwitches walkthrough project created by Anna Graves.
+- SaharaReporters for Privacy policy.
