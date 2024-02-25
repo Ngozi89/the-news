@@ -22,6 +22,12 @@ body {
     margin-top: 140px;
 }
 
+.container-fluid {
+    display: flex;
+}
+
+
+
 .navbar-nav {
     font-size: 22px;
 }
@@ -172,4 +178,12 @@ body {
     .navbar-nav {
         margin-left: 450px;
     }
+}
+
+@media screen and (min-width: 950px) {
+    #account {
+        margin-left: 1200px;
+        color: black;
+    }
+
 }
