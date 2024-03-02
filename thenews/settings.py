@@ -33,7 +33,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['8000-ngozi89-thenews-dvl2zw9we4f.ws-eu108.gitpod.io']
+ALLOWED_HOSTS = ['8000-ngozi89-thenews-icyzp2sph0s.ws-eu108.gitpod.io']
 
 
 # Application definition

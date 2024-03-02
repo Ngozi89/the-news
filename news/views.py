@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Comment
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CommentForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -69,6 +73,60 @@ class PostDetail(View):
             },
         )
 
+class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+    """
+    This view is used to allow logged in users to edit their own comments
+    """
+    model = Comment
+    form_class = CommentForm
+    template_name = 'edit.html'
+    success_message = "Comment edited successfully"
+
+    def form_valid(self, form):
+        form.instance.name = self.request.user.username
+        return super().form_valid(form)
+
+    def test_func(self):
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+
+    def get_success_url(self):
+        """ Return to post detail view when comment updated sucessfully"""
+        post = self.object.post
+
+        return reverse_lazy('post_detail', kwargs={'slug': post.slug})
+
+
+class DeleteComment( LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    """
+    This view is used to allow logged in users to delete their own comments
+    """
+    model = Comment
+    template_name = 'delete.html'
+    success_message = "Comment deleted successfully"
+
+    def test_func(self):
+        """
+        Prevent another user from deleting user's comments
+        """
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+
+    def delete(self, request, *args, **kwargs):
+        """
+        This function is used to display success message given
+        SuccessMessageMixin cannot be used in generic.DeleteView.
+        Credit: https://stackoverflow.com/questions/24822509/
+        success-message-in-deleteview-not-shown
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteComment, self).delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        """ Return to post detail view when comment deleted sucessfully"""
+        post = self.object.post
+
+        return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 class PostLike(View):
 
