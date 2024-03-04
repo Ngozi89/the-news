@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import CommentForm
+from .forms import CommentForm, AdsForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
@@ -40,6 +40,20 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+    def add_ads(request):
+        submitted = False
+    if request.method == "POST":
+        form = AdsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_ads?submitted=True')
+    else:
+        form =AdsForm
+        if 'submitted' in request.GET:
+            submitted = True
+            return (request, 'add_ads.html', {'form' ':', form, 'submitted'})                   
+
 
 # Post comment
     def post(self, request, slug, *args, **kwargs):

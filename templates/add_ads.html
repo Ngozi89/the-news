@@ -1,0 +1,17 @@
+{% extends templates/base.html %}
+
+{% block content %}
+<h1>Advertise with us</h1>
+<br>
+{% if submitted %}
+Your ads request was submitted Succefully
+
+{% else %}
+   <form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-secondary">
+   </form>
+   {% endif %}
+{% endblock%}
