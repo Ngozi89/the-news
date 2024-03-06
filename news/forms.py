@@ -8,10 +8,10 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
 
-class AdsForm(ModelForm):
+class AdsForm(forms.ModelForm):
     class Meta:
         model = Ads
-        fields = ('name', 'email_address', 'phone', 'image', 'discription')
+        fields = ('name', 'email_address', 'phone', 'image', 'description')
         labels = {
             'name': '',
             'email_address': '',
@@ -20,9 +20,9 @@ class AdsForm(ModelForm):
             'description': '',
         }
 widgets = {
-    'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Name'})
-    'email_address': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
-    'phone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone'})
-    'image': forms.MediaInput(attrs={'class':'form-control', 'placeholder':'Image'})
+    'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Name'}),
+    'email_address': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}),
+    'phone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone'}),
+    'image': forms.DateInput(attrs={'class':'form-control', 'placeholder':'Image'}),
     'description': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Description'})
-}        
+}
