@@ -70,15 +70,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
+                    {% if messages %}
                     <!-- Create for loop to iterate through our messages-->
                     {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
+                    <!-- Toast -->
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+        <!-- End toast-->
+    </div>
+{% endif %}
+                    
     
-                    {% endfor %}
+                
                 </div>
             </div>
         </div>
@@ -110,13 +123,17 @@
                     <i class="fab fa-youtube-square ms-3"></i></a>
             </p>
         </footer>
-    
-        <script>
-            setTimeout(function () {
-                let messages = document.getElementById("msg");
-                let alert = new bootstrap.Alert(messages);
-                alert.close();
-            }, 3000);
-        </script>
+        {% block postloadjs %}
+<script type="text/javascript">
+    $('.toast').toast('show');
+</script>
+<script>
+    setTimeout(function () {
+        let messages = document.getElementById("msg");
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+    }, 3000);
+</script>
+{% endblock %}
 </body>
 </html>
