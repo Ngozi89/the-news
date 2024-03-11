@@ -48,19 +48,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
-# Ads
-class Ads(models.Model):
-
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="ads")
-    name = models.CharField(max_length=80)
-    email_address = models.EmailField()
-    phone = models.TextField()
-    image = models.ImageField()
-    description = models.TextField()
-    approved = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"Ads {self.body} by {self.name}"
-
