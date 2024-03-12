@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Reply
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CommentForm
@@ -39,7 +39,7 @@ class PostDetail(View):
                 "liked": liked,
                 "comment_form": CommentForm()
             },
-        )                   
+        )            
 
 # Post comment
     def post(self, request, slug, *args, **kwargs):
@@ -72,6 +72,31 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+   
+
+class ReplyComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.View):
+    """
+    This view is used to allow logged in users to edit their own comments
+    """
+    model = Comment
+    form_class = CommentForm
+    template_name = 'reply.html'
+    success_message = "Comment replied successfully"
+
+    def form_valid(self, form):
+        form.instance.name = self.request.user.username
+        return super().form_valid(form)
+
+    def test_func(self):
+        reply = self.get_object()
+        return reply.name == self.request.user.username
+
+    def get_success_url(self):
+        """ Return to post detail view when comment replied sucessfully"""
+        post = self.object.post
+
+        return reverse_lazy('post_detail', kwargs={'slug': post.slug})
+
 
 class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
     """
@@ -97,7 +122,7 @@ class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 
-class DeleteComment( LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     """
     This view is used to allow logged in users to delete their own comments
     """
@@ -128,6 +153,7 @@ class DeleteComment( LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
 
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
+
 class PostLike(View):
 
     def post(self, request, slug):
@@ -146,4 +172,4 @@ def about(request):
 
 
 def policy(request):
-    return render(request, 'policy.html')            
+    return render(request, 'policy.html')
