@@ -90,9 +90,9 @@ Target audiences:
 ### As a **returning user**
 
 - I want to be sure my data is protected.
--
+
 - I want the server to recognise my device so I can login without entering my information again
--
+
 - I want to access comments from any post on the website.
 
 - I want to be able to access the navbar.
@@ -360,9 +360,14 @@ The navbar is a key feature of the website, located at the top of the page. It a
 
 ![](readme/comment.png)
 
-The form to leave a comment appears when the user opens post to read news details. It is handled by JavaScript without refreshing the page. This allows for a seamless and smooth user experience, as users can leave comments without disrupting their current browsing session.
+The form to leave a comment appears when the user opens post to read News details and toasted is used to make stop user from submitting empty form. 
+
+It is handled by JavaScript without refreshing the page. This allows for a seamless and smooth user experience, as users can leave comments without disrupting their current browsing session.
 
 It is important to note that all comments are moderated to ensure that the content is appropriate and relevant to the post. This helps to maintain a positive and respectful community and ensures that all users have a positive experience while using the website.
+
+Also, a user can edit or delete comment.
+![](readme/comment-error.png)
 
 ## Admin ([uac 5](#uac5))
 
@@ -382,13 +387,11 @@ In the project before bundling the code was compiled with Babel, a JavaScript tr
 
 ## **Feature considerations**
 
-1. Reply comment section so that users can interact with each other and engange more on the post.
+1. Reply comment section is already is progress but requires more logic to make it function properly so that users can interact with each other and engange more on the post.
 
-2. Deleting comment and editing comment so users can leave only what they want to be on a post.
+2. Translation, so that users can translate to their prefared language.
 
-3. Translation, so that users can translate to their prefared language.
-
-4. Reporting undesirable content.
+3. Reporting undesirable content.
 Buttons for reporting undesirable content on a website will allow users to quickly and easily flag content that they believe is inappropriate, offensive, or violative of the website's terms of service. This allows website administrators to quickly identify and remove such content, keeping the website safe and enjoyable for all users. Additionally, reporting buttons can help to create a sense of community and shared responsibility among users, encouraging them to take an active role in maintaining the website's standards and quality.
 
 5. Buttons to share posts on social media.
@@ -491,3 +494,4 @@ This project was deployed using Code Institute's mock terminal for Heroku and th
 - Matt Rudge for I think before I blog workthrough project.
 - News Mix news blog was built with knowledge from love sandwitches walkthrough project created by Anna Graves.
 - SaharaReporters for Privacy policy.
+- Desphxis

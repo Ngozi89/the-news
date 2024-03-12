@@ -62,5 +62,5 @@ class Reply(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-         return f"Reply {self.body} by {self.name}"
+        return f"Reply {self.body} by {self.name}"
         
