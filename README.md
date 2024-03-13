@@ -360,14 +360,15 @@ The navbar is a key feature of the website, located at the top of the page. It a
 
 ![](readme/comment.png)
 
-The form to leave a comment appears when the user opens post to read News details and toasted is used to make stop user from submitting empty form. 
+The form to leave a comment appears when the user opens post to read News details and toast is used to make stop user from submitting empty form. 
+![](readme/empty-comment-error.png)
 
 It is handled by JavaScript without refreshing the page. This allows for a seamless and smooth user experience, as users can leave comments without disrupting their current browsing session.
 
 It is important to note that all comments are moderated to ensure that the content is appropriate and relevant to the post. This helps to maintain a positive and respectful community and ensures that all users have a positive experience while using the website.
 
 Also, a user can edit or delete comment.
-![](readme/comment-error.png)
+![](readme/edit-comment.png) ![](readme/delete-your-comment.png)
 
 ## Admin ([uac 5](#uac5))
 
@@ -388,6 +389,7 @@ In the project before bundling the code was compiled with Babel, a JavaScript tr
 ## **Feature considerations**
 
 1. Reply comment section is already is progress but requires more logic to make it function properly so that users can interact with each other and engange more on the post.
+![](readme/edit-comment.png)
 
 2. Translation, so that users can translate to their prefared language.
 
@@ -494,4 +496,4 @@ This project was deployed using Code Institute's mock terminal for Heroku and th
 - Matt Rudge for I think before I blog workthrough project.
 - News Mix news blog was built with knowledge from love sandwitches walkthrough project created by Anna Graves.
 - SaharaReporters for Privacy policy.
-- Desphxis
+- https://github.com/Madu-J/daily-digest01 (edit and delete comment)
