@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block title %}The News | Profile{% endblock %}
-{% block content %}
-{% load crispy_forms_tags %}
 
-<h4 class="page-title">Profile</h4>
-<hr>
+
+{% block content %}
+
+<br>
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h3 class="page-title">Profile</h3>
             <img
               src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-              width="50%" class="img-fluid featured-image" alt="placeholder image"
+              width="45%" class="img-fluid" alt="placeholder image"
             />
             <br>
             <h3 id="profile">{{user.username|title}}</h3>
