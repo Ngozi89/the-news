@@ -32,6 +32,15 @@ class Post(models.Model):
         return self.likes.count()
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField()
+    my_pic = models.ImageField(null=True, blank=True, upload_to='profile_image')
+
+    def __str__(self):
+        return self.user.username
+
+
 # Add comment models.
 class Comment(models.Model):
 

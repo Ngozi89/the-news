@@ -29,11 +29,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['thenews-527458e708d0.herokuapp.com', 'localhost', '8000-ngozi89-thenews-cwois21ovuo.ws-eu109.gitpod.io']
+ALLOWED_HOSTS = ['thenews-527458e708d0.herokuapp.com', 'localhost', '8000-ngozi89-thenews-ad875087af1.ws-eu114.gitpod.io']
 
 
 # Application definition
