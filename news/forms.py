@@ -1,6 +1,13 @@
-from .models import Comment, Reply
+from .models import Comment, Reply, Profile
 from django import forms                     
 from cloudinary.forms import CloudinaryFileField
+
+
+class ProfileForm(forms.ModelForm):
+    
+    class Meta:
+            model = Profile
+            fields = [ 'user', 'bio',]
 
 
 # create form class

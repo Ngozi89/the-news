@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, Reply
+from .models import Post, Comment, Reply, Profile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import CommentForm
+from .forms import CommentForm, ProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
@@ -72,6 +72,14 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+
+class Profile(LoginRequiredMixin, generic.TemplateView):
+    model = Profile
+    template_name = 'profile.html'
+    
+    def __str__(self):
+        return f"Profile {self.user}by{self.bio}"
    
 
 class ReplyComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.View):

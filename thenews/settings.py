@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'news',
+    'profile',
 ]
 
 SITE_ID = 1
@@ -168,6 +169,7 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_RORT = os.path.join(BASE_DIR, 'staticfiles')
 
+Media_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
