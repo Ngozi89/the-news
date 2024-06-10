@@ -29,6 +29,21 @@
     <div class="col card mb-4 mt-3 left top">
       <div class="card-body">
         <!-- The post content goes inside the card-text. -->
+        {% endif %}
+        {% if user.is_authenticated and post.author == user %}
+        <span>
+            <a class="action-btn btn btn-info" href="{% url 'edit_article' post.slug %}"
+                aria-label="edit-article">
+                <i class="fas fa-edit"></i>
+            </a>
+        </span>
+        <span>
+            <a class="action-btn btn btn-info" href="{% url 'delete_article' post.pk %}"
+                aria-label="delete-article">
+                <i class="fas fa-times"></i>
+            </a>
+        </span>
+        {% endif %}
         <!-- Use the | safe filter inside the template tags -->
         <p class="card-text" id="post-del">{{ post.content | safe }}</p>
         <div class="row">

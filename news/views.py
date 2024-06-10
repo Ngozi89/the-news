@@ -108,7 +108,40 @@ class AddArticle(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
             calculated_field=self.object.title,
         )
 
-   
+class EditArticle(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+    """
+    This view enables logged in users to edit their own posts
+    """
+    model = Post
+    form_class = ArticleForm
+    template_name = 'edit_article.html'
+    success_message = "%(calculated_field)s was updated successfully"
+
+    def form_valid(self, form):
+        """
+        This method is called when valid form data has been posted.
+        A signed in user is set as the author of the article.
+        """
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        Block user from editing other's posts
+        """
+        post = self.get_object()
+        return post.author == self.request.user
+
+    def get_success_message(self, cleaned_data):
+        """
+        Override the get_success_message() method to add article title
+        into the success message.
+        """
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.title,
+        )
+
 
 class ReplyComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.View):
     """
