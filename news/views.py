@@ -143,6 +143,32 @@ class EditArticle(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, 
         )
 
 
+class DeleteArticle(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    """
+    This view enables logged in users to delete their own posted articles.
+    """
+    model = Post
+    template_name = 'delete_article.html'
+    success_message = "Article deleted successfully"
+    success_url = reverse_lazy('news')
+
+    def test_func(self):
+        """
+        Prevent another user from deleting other's post
+        """
+        post = self.get_object()
+        return post.author == self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Displays sucess message and cannot be used in generic.DeleteView.
+
+
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteArticle, self).delete(request, *args, **kwargs)
+
+
 class ReplyComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.View):
     """
     This view is used to allow logged in users to edit their own comments
