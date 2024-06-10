@@ -1,6 +1,18 @@
-from .models import Comment, Reply, Profile
+from .models import Comment, Reply, Profile, Post
 from django import forms                     
 from cloudinary.forms import CloudinaryFileField
+
+
+class ArticleForm(forms.ModelForm):
+    """
+    Create Article Form
+    """
+    class Meta:
+        model = Post
+        fields = [
+            'title', 'slug', 
+            'content',
+        ]
 
 
 class ProfileForm(forms.ModelForm):
