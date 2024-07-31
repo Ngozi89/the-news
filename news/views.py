@@ -9,12 +9,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 
+class Home(generic.TemplateView):
+    """This view is used to display the home page"""
+    template_name = "index.html"
+
+
 # Create your views here.
 class PostList(generic.ListView):
     model = Post
 # Render list of post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'browse_article.html'
 # Seperate the pages
     paginate_by = 6
 
