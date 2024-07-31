@@ -98,6 +98,7 @@ class AddArticle(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
     def get_success_message(self, cleaned_data):
         """
         This function overrides the get_success_message method to add
