@@ -17,9 +17,10 @@
             <div class="card card-detail post-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in post.image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                    class="card-img-top" alt="placeholder image">
+                width="100%"
+                >
                 {% else %}
-                <img src=" {{ post.image.url }}" alt="post image" class="card-img-top">
+                <img src=" {{ post.featured_image.url }}" width="100%" />
                 {% endif %}
                 <div class="card-body pb-1">
                     <h2 class="card-title post-detail-title text-truncate">{{ post.title }}</h2>

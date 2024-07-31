@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load crispy_forms_tags %}
 
 <div class="masthead">
   <div class="container">
@@ -27,23 +29,24 @@
 <div class="container">
   <div class="row">
     <div class="col card mb-4 mt-3 left top">
-      <div class="card-body">
-        <!-- The post content goes inside the card-text. -->
-        {% endif %}
-        {% if user.is_authenticated and post.author == user %}
-        <span>
-            <a class="action-btn btn btn-info" href="{% url 'edit_article' post.slug %}"
-                aria-label="edit-article">
-                <i class="fas fa-edit"></i>
-            </a>
-        </span>
-        <span>
-            <a class="action-btn btn btn-info" href="{% url 'delete_article' post.pk %}"
-                aria-label="delete-article">
-                <i class="fas fa-times"></i>
-            </a>
-        </span>
-        {% endif %}
+        <div class="col-12 col-md-8">
+          <div class="card-body post-detail-outer py-2">
+            <div>
+                <h1 class="card-title page-title post-title text-left">{{ post.title }}</h1>
+            </div>
+            <p class="card-text">Author: {{ post.author }}</p>
+            <div class="mb-5">
+               
+                <p>
+                      <span><i class="far fa-clock pr-2"> </i></span>
+                      <span>Created On: {{ post.created_on }}</span>
+                  </p>
+                  <p>
+                      <span><i class="far fa-calendar pr-2"> </i></span>
+                      <span>Created On: {{ post.created_on }}</span>
+                  </p>
+
+              </div>
         <!-- Use the | safe filter inside the template tags -->
         <p class="card-text" id="post-del">{{ post.content | safe }}</p>
         <div class="row">
@@ -78,8 +81,52 @@
 
                 {% endif %}
               </form>
-              {% else %}
-
+              {% endif %}
+              <div class="card-body">
+                <!-- The post content goes inside the card-text. -->
+                {% endif %}
+                {% if user.is_authenticated and post.author == user %}
+                <span>
+                    <a class="action-btn btn btn-info" href="{% url 'edit_article' post.slug %}"
+                        aria-label="edit-article">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </span>
+                <span>
+                    <a class="action-btn btn btn-info" href="{% url 'delete_article' post.pk %}"
+                        aria-label="delete-article">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </span>
+                {% endif %}
+                </div>
+                  <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card mb-3 post-detail-card">
+                                <h5 class="card-header post-detail-header">
+                                    News in details
+                                </h5>
+                                <div class="card-body">
+                                    <p class="card-text">{{ post.content | safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="card mb-3 post-detail-card">
+                              <h5 class="card-header post-detail-header">Subtitle</h5>
+                              <div class="card-body">
+                                  <div class="card-text">{{ post.method | safe }}</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>      
               <span class="text-secondary"><i class="far fa-heart"></i></span>
               {% endif %}
               <!-- Show The number of likes -->
@@ -106,10 +153,10 @@
           
       {% for reply in comment.replycomment_set.all %}
       <div>
-          <div class="fw-bold"><small><b>Name {{ reply.replier_name }}</b></small></div>
-          <div style="font-size: 10px;">date {{ reply.replied_date }}</div>
-          <small>Reply comment {{ reply.content }}</small><br>
-          </div>
+        <div class="fw-bold"><small><b>Name {{ reply.replier_name }}</b></small></div>
+        <div style="font-size: 10px;">date {{ reply.replied_date }}</div>
+        <small>Reply comment {{ reply.content }}</small><br>
+        </div>
       {% endfor %}
   
   {% endfor %}
@@ -139,15 +186,14 @@
               {{ comment.created_on }}
             </span>
             {% if user.is_authenticated and user.username == comment.name %}
-                        <span class="comment-action-btn pl-2">
-                            <a href="{% url 'edit' comment.id %}" aria-label="edit-comment"><i
-                                    class="fas fa-edit link-primary"></i></a>
-                            <a href="{% url 'delete' comment.id %}" aria-label="delete-comment"><i
-                                    class="fas fa-times"></i></a>  
-                          
-                        </span>
-                      </span>
-                            {% endif %}
+              <span class="comment-action-btn pl-2">
+              <a href="{% url 'edit' comment.id %}" aria-label="edit-comment"><i
+                class="fas fa-edit link-primary"></i></a>
+              <a href="{% url 'delete' comment.id %}" aria-label="delete-comment"><i
+                class="fas fa-times"></i></a>  
+              </span>
+              </span>
+          {% endif %}
           </p>
           <!-- The body of the comment -->
           {{ comment.body | linebreaks }}
