@@ -109,6 +109,21 @@ class AddArticle(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
             calculated_field=self.object.title,
         )
 
+
+class MyArticle(LoginRequiredMixin, generic.ListView):
+    """
+    Displays list of article created by a logged in
+    user.
+    """
+    model = Post
+    template_name = 'my_article.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        """Override get_queryset to filter by user"""
+        return Post.objects.filter(author=self.request.user)
+
+
 class EditArticle(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
     """
     This view enables logged in users to edit their own posts
