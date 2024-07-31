@@ -33,15 +33,28 @@
                     <p class="card-text">
                         <span><i class="far fa-heart "></i></span>
                        <span><i class="far fa-clock pr-2"></i></span>
-                       <span>Publish Time: {{ post.created_on }}</span>
+                       <span>Created On: {{ post.created_on }}</span>
                     </p>
                     <a href="{% url 'post_detail' post.slug %}" class="stretched-link"
                         aria-label="post-detail"></a>
+                    
+                    <!-- Read more ......................................... -->
+                    <div class="post_body">
+                        {{ post.excerpt|safe|truncatewords:"50"|linebreaks }}
+                        <a href="{% url 'post_detail' post.slug %}">Read More</a>
+                    <hr />
+                        <p class="card-test text-muted h6">
+                        {{ post.created_on}}
+                        <i class="far fa-heart"> </i>
+                        {{ post.number_of_likes }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+        {% if forloop.counter|divisibleby:3 %}
     </div>
+    <div class="row">{% endif %} {% endfor %}</div>
 </div>
 {% include "paginator.html" %}
 {% endif %}

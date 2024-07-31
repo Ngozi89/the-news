@@ -47,10 +47,10 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'add_article' %}">Add Article</a>
+                            <a class="nav-link" href="{% url 'browse_article' %}">Browse Article</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'browse_article' %}">Browse Article</a>
+                            <a class="nav-link" href="{% url 'add_article' %}">Add Article</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'profile' user.pk %}">My Profile</a>
