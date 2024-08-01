@@ -2,33 +2,18 @@
 {% block content %} 
 {% load crispy_forms_tags %}
 
-<div class="masthead">
-  <div class="container">
-    <div class="row g-0">
-      <div class="col-md-6 masthead-text">
-        <!-- Post title goes in these h1 tags -->
-        <h1 class="post-title">{{ post.title }}</h1>
-        <!-- Post author goes before the | the post's created date goes after -->
-        <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
-      </div>
-      <div class="d-none d-md-block col-md-6 masthead-image">
-        <!-- The featured image URL goes in the src attribute -->
-        {% if "placeholder" in post.featured_image.url %}
-        <img
-          src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-          width="100%"
-        />
-        {% else %}
-        <img src=" {{ post.featured_image.url }}" width="100%" />
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col card mb-4 mt-3 left top">
+<div class="container p-0">
+  <div class="container pt-3">
+      <div class="card mb-3 post-detail-card">
+      <div class="col-12 col-md-4">
+        {% if "placeholder" in post.featured_image.url %}
+        <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+            class="post-detail-img" alt="placeholder image">
+        {% else %}
+        <img src=" {{ post.featured_image.url }}" alt="featured image" class="post-detail-img">
+        {% endif %}
+    </div>
         <div class="col-12 col-md-8">
           <div class="card-body post-detail-outer py-2">
             <div>
@@ -36,22 +21,15 @@
             </div>
             <p class="card-text">Author: {{ post.author }}</p>
             <div class="mb-5">
-               
-                <p>
-                      <span><i class="far fa-clock pr-2"> </i></span>
-                      <span>Created On: {{ post.created_on }}</span>
-                  </p>
                   <p>
                       <span><i class="far fa-calendar pr-2"> </i></span>
                       <span>Created On: {{ post.created_on }}</span>
                   </p>
+                  <!-- Use the | safe filter inside the template tags -->
+                   <p class="card-text" id="post-del">{{ post.content | safe }}</p>
+            </div>
 
-              </div>
-        <!-- Use the | safe filter inside the template tags -->
-        <p class="card-text" id="post-del">{{ post.content | safe }}</p>
-        <div class="row">
-          <div class="col-1">
-            <strong>
+              <div class="action-buttons-outer d-block">
               {% if user.is_authenticated %}
               <form
                 class="d-inline"
@@ -78,12 +56,8 @@
                 >
                   <i class="far fa-heart"></i>
                 </button>
-
                 {% endif %}
-              </form>
-              {% endif %}
-              <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
+                </form>
                 {% endif %}
                 {% if user.is_authenticated and post.author == user %}
                 <span>
@@ -93,139 +67,106 @@
                     </a>
                 </span>
                 <span>
-                    <a class="action-btn btn btn-info" href="{% url 'delete_article' post.pk %}"
-                        aria-label="delete-article">
-                        <i class="fas fa-times"></i>
-                    </a>
-                </span>
-                {% endif %}
-                </div>
-                  <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card mb-3 post-detail-card">
-                                <h5 class="card-header post-detail-header">
-                                    News in details
-                                </h5>
-                                <div class="card-body">
-                                    <p class="card-text">{{ post.content | safe }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <div class="card mb-3 post-detail-card">
-                              <h5 class="card-header post-detail-header">Subtitle</h5>
-                              <div class="card-body">
-                                  <div class="card-text">{{ post.method | safe }}</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                  <a class="action-btn btn btn-info" href="{% url 'delete_article' post.pk %}"
+                      aria-label="delete-article">
+                      <i class="fas fa-times"></i>
+                  </a>
+                  </span>
+                  {% endif %}
               </div>
-            </div>      
-              <span class="text-secondary"><i class="far fa-heart"></i></span>
+              <div class="col-1">
+                {% with comments.count as total_comments %}
+                <strong class="text-secondary"
+                  ><i class="far fa-comments"></i>
+                  <!-- Total_comments variable -->
+                  {{ total_comments }}</strong>
+                {% endwith %}
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- Here -->
+            {% for comment in comments %}
+            <div>{{ comment }}</div>
+                
+            {% for reply in comment.replycomment_set.all %}
+            <div>
+              <div class="fw-bold"><small><b>Name {{ reply.replier_name }}</b></small></div>
+              <div style="font-size: 10px;">date {{ reply.replied_date }}</div>
+              <small>Reply comment {{ reply.content }}</small><br>
+            </div>
+            {% endfor %}
+
+            <div id="reply{{comment.id}}" class="collapse in">
+              <form method="post">
+                  {% csrf_token %}
+                    <input name="replier_name" class="form-control form-control-sm" type="hidden">
+                    <input name="reply_content" class="form-control form-control-lg" type="text" placeholder="Reply comment">
+                    <button type="submit" class="btn btn-primary" style="float: right; margin-top: 5px;">Reply</button>
+                </form>
+                <!-- End Here-->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 card mb-4 mt-3">
+                <h3>Comments:</h3>
+                <div class="card-body">
+                  <!-- For loop inside the empty control tags to iterate through each comment in comments -->
+                  {% for comment in comments %}
+                  <div class="comments" style="padding: 10px">
+                  <p class="font-weight-bold">
+                  <!-- The commenter's name. -->
+                  {{ comment.name }}
+                  <span class="text-muted font-weight-normal">
+                    <!-- The comment's created date -->
+                    {{ comment.created_on }}
+                   </span>
+                   {% if user.is_authenticated and user.username == comment.name %}
+                    <span class="comment-action-btn pl-2">
+                    <a href="{% url 'edit' comment.id %}" aria-label="edit-comment"><i
+                      class="fas fa-edit link-primary"></i></a>
+                    <a href="{% url 'delete' comment.id %}" aria-label="delete-comment"><i
+                      class="fas fa-times"></i></a>  
+                    </span>
+                    </span>
+                    {% endif %}
+                  </p>
+                <!-- The body of the comment -->
+                {{ comment.body | linebreaks }}
+                <h6><a href="{% url 'reply' comment.id %}" aria-label="reply-comment"><i
+                  class=""></i>reply</a></h6>
+              </div>
+              <!-- End for loop -->
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body">
+              {% if commented %}
+              <div class="alert alert-success" role="alert">
+                Your comment is awaiting approval
+              </div>
+              {% else %}
+
+              <!-- For authenticated users to leave comments -->
+              {% if user.is_authenticated %}
+
+              <h3>Leave a comment:</h3>
+              <p>Posting as: {{ user.username }}</p>
+              <form method="post" style="margin-top: 1.3em">
+                {{ comment_form | crispy }} {% csrf_token %}
+                <!-- Cross-Site Request Forgery -->
+                <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+              </form>
               {% endif %}
-              <!-- Show The number of likes -->
-              <span class="text-secondary"> {{ post.number_of_likes }} </span>
-            </strong>
           </div>
-          <div class="col-1">
-            {% with comments.count as total_comments %}
-            <strong class="text-secondary"
-              ><i class="far fa-comments"></i>
-              <!-- Total_comments variable -->
-              {{ total_comments }}</strong>
-            {% endwith %}
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <!-- Here -->
-      {% for comment in comments %}
-      <div>{{ comment }}</div>
-          
-      {% for reply in comment.replycomment_set.all %}
-      <div>
-        <div class="fw-bold"><small><b>Name {{ reply.replier_name }}</b></small></div>
-        <div style="font-size: 10px;">date {{ reply.replied_date }}</div>
-        <small>Reply comment {{ reply.content }}</small><br>
-        </div>
-      {% endfor %}
-  
-  {% endfor %}
-
-  <div id="reply{{comment.id}}" class="collapse in">
-     <form method="post">
-        {% csrf_token %}
-          <input name="replier_name" class="form-control form-control-sm" type="hidden">
-          <input name="reply_content" class="form-control form-control-lg" type="text" placeholder="Reply comment">
-          <button type="submit" class="btn btn-primary" style="float: right; margin-top: 5px;">Reply</button>
-      </form>
-      <!-- End Here-->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 card mb-4 mt-3">
-      <h3>Comments:</h3>
-      <div class="card-body">
-        <!-- For loop inside the empty control tags to iterate through each comment in comments -->
-        {% for comment in comments %}
-        <div class="comments" style="padding: 10px">
-          <p class="font-weight-bold">
-            <!-- The commenter's name. -->
-            {{ comment.name }}
-            <span class="text-muted font-weight-normal">
-              <!-- The comment's created date -->
-              {{ comment.created_on }}
-            </span>
-            {% if user.is_authenticated and user.username == comment.name %}
-              <span class="comment-action-btn pl-2">
-              <a href="{% url 'edit' comment.id %}" aria-label="edit-comment"><i
-                class="fas fa-edit link-primary"></i></a>
-              <a href="{% url 'delete' comment.id %}" aria-label="delete-comment"><i
-                class="fas fa-times"></i></a>  
-              </span>
-              </span>
-          {% endif %}
-          </p>
-          <!-- The body of the comment -->
-          {{ comment.body | linebreaks }}
-          <h6><a href="{% url 'reply' comment.id %}" aria-label="reply-comment"><i
-            class=""></i>reply</a></h6>
-        </div>
-        <!-- End for loop -->
-        {% endfor %}
-      </div>
-    </div>
-    <div class="col-md-4 card mb-4 mt-3">
-      <div class="card-body">
-        {% if commented %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting approval
-        </div>
-        {% else %}
-
-        <!-- For authenticated users to leave comments -->
-        {% if user.is_authenticated %}
-
-        <h3>Leave a comment:</h3>
-        <p>Posting as: {{ user.username }}</p>
-        <form method="post" style="margin-top: 1.3em">
-          {{ comment_form | crispy }} {% csrf_token %}
-          <!-- Cross-Site Request Forgery -->
-          <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-        </form>
-        {% endif %} {% endif %}
-      </div>
-    </div>
-  </div>
 </div>
+{% endif %}
 
+{% endfor %}
 {% endblock content %}

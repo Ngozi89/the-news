@@ -15,14 +15,12 @@
     <div class="row card-deck">
         {% for post in post_list  %}
         <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
-                {% if "placeholder" in post.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                width="100%"
-                >
-                {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%" />
+            <div class="card card-detail post-card mb-3 shadow-sm mx-auto mx-sm-2">
+              {% if "placeholder" in post.featured_image.url %}
+              <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                  class="post-detail-img" alt="placeholder image">
+              {% else %}
+              <img src=" {{ post.featured_image.url }}" alt="feature-image" class="post-detail-img">
                 {% endif %}
                 <div class="card-body pb-1">
                     <!--  checks if post is unpublished -->
