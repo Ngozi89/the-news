@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, Reply, Profile
+from .models import Post, Comment, Profile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CommentForm, ProfileForm, ArticleForm
@@ -190,22 +190,6 @@ class DeleteArticle(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView)
         return super(DeleteArticle, self).delete(request, *args, **kwargs)
 
 
-class ReplyComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.View):
-    """
-    This view is used to allow logged in users to edit their own comments
-    """
-    model = Comment
-    form_class = CommentForm
-    template_name = 'reply.html'
-    success_message = "Comment replied successfully"
-
-    def form_valid(self, form):
-        form.instance.name = self.request.user.username
-        return super().form_valid(form)
-
-    def test_func(self):
-        reply = self.get_object()
-        return reply.name == self.request.user.username
 
     def get_success_url(self):
         """ Return to post detail view when comment replied sucessfully"""

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Reply, Profile
+from .models import Post, Comment, Profile
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -31,7 +31,3 @@ class CommentAdmin(admin.ModelAdmin):
 # Approve comment
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
-
-@admin.register(Reply)
-class ReplyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'body', 'created_on', 'approved')

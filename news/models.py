@@ -1,14 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
+from django_extensions.db.fields import AutoSlugField
+
 
 STATUS = ((0, "Draft"), (1, "Pulished"))
 
 
 # Create post models.
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    title = models.CharField(max_length=120, unique=True)
+    slug = models.AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news_posts")
     updated_on = models.DateTimeField(auto_now=True)
@@ -56,20 +59,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
-
-class Reply(models.Model):
-
-    commet = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies")
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ["created_on"]
-
-    def __str__(self):
-        return f"Reply {self.body} by {self.name}"
         

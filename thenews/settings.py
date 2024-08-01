@@ -54,10 +54,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
+    'django_extensions',
     'crispy_forms',
     'news',
     'profile',
 ]
+
+SUMMERNOTE_CONFIG = {
+    'width': '100%',
+    'height': '250',
+}
 
 SITE_ID = 1
 
