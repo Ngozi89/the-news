@@ -43,20 +43,20 @@
                 <div class="collapse navbar-collapse right" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">The News</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'browse_article' %}">Browse Article</a>
+                            <a class="nav-link" href="{% url 'browse_article' %}">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'add_article' %}">Add Article</a>
+                            <a class="nav-link" href="{% url 'add_article' %}">Add</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' user.pk %}">My Profile</a>
+                            <a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'my_article' %}">My Article</a>
+                            <a class="nav-link" href="{% url 'my_article' %}">Post</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="register" href="{% url 'account_logout' %}">Logout</a>
