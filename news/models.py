@@ -15,7 +15,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news_post")
     updated_on = models.DateTimeField(auto_now=True)
-    method = models.CharField(max_length=120, default=0, null=True)
+    subtitle = models.CharField(max_length=120, null=True)
     content = models.TextField(blank=True, null=True)
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
