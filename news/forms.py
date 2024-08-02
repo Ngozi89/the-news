@@ -10,7 +10,8 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            'title', 
+            'title',
+            'method', 
             'content', 
             'featured_image',
         ]
