@@ -5,12 +5,24 @@
 /* General styling*/
 body {
     font-family: Lato, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     background-color: #f9fafc;
 }
 
 .content {
     min-height: calc(100vh - 90px);
+}
+
+.brand {
+    font-family: Lato, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ff0000;
+}
+
+.red-o {
+    color: red;
+    font-size: 50px;
 }
 
 .blue-text {
@@ -275,6 +287,11 @@ body {
 
 .social-networks i:hover {
     color: #142a2b;
+}
+
+#policy a {
+    color: #fff;
+    display: inline;
 }
 
 /* Small devices (landscape phones, less than 768px */
