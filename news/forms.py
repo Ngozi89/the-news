@@ -11,7 +11,6 @@ class ArticleForm(forms.ModelForm):
         model = Post
         fields = [
             'title', 
-            'slug', 
             'content', 
             'featured_image',
         ]

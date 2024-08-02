@@ -33,7 +33,11 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['thenews-527458e708d0.herokuapp.com', 'localhost', '8000-ngozi89-thenews-ad875087af1.ws-eu114.gitpod.io', '8000-ngozi89-thenews-n7ib5i09lio.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['thenews-527458e708d0.herokuapp.com', 
+'localhost', 
+'8000-ngozi89-thenews-ad875087af1.ws-eu114.gitpod.io', 
+'8000-ngozi89-thenews-c78vlcpk5rs.ws.codeinstitute-ide.net'
+]
 
 
 # Application definition
@@ -57,7 +61,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'news',
-    'profile',
 ]
 
 SUMMERNOTE_CONFIG = {
