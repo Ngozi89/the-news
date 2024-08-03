@@ -1,6 +1,7 @@
 from .models import Comment, Profile, Post
 from django import forms                     
 from cloudinary.forms import CloudinaryFileField
+from django_summernote.widgets import SummernoteWidget
 
 
 class ArticleForm(forms.ModelForm):

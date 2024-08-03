@@ -7,21 +7,20 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Post)
 # Post admin class
 class PostAdmin(SummernoteModelAdmin):
-
     list_display = ('title', 'slug', 'status', 'created_on')
 # Search field.
     search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
-    summernote_fields = ('content')
+    summernote_fields = ('content', 'subtitle')
 
 
 admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'bio',)
 
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-
     list_display = ('name', 'body', 'post', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
 # Search through comments.
