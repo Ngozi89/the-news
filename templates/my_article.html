@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="page-title">Blog Post</h1>
+            <h1 class="page-title">My Article</h1>
         </div>
     </div>
     <hr class="home-break">
@@ -22,7 +22,17 @@
               <img src=" {{ post.featured_image.url }}" alt="post image" class="card-img-top">
                 {% endif %}
                 <div class="card-body pb-1">
-                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}</h2>
+                    <!--  checks if post is unpublished -->
+                    {% if post.status == 0 %}
+                    {% comment %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                        <span class="draft">Draft</span>
+                    </h2>
+                    {% else %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                    <span class="draft">Published</span></h2>
+                    {% endcomment %}
+                    {% endif %}
                     <p class="card-text">
                         <span><i class="far fa-clock pr-2"></i></span>
                         <span>Created On: {{ post.created_on }}</span>
@@ -32,7 +42,7 @@
 
                     <!-- Read more ......................................... -->
                     <div class="post_body">
-                        {{ post.excerpt|safe|truncatewords:"50"|linebreaks }}
+                        {{ post.content|safe|truncatewords:"50"|linebreaks }}
                         <a href="{% url 'post_detail' post.slug %}">Read More</a>
                     <hr/>
                         <p class="card-test text-muted h6">

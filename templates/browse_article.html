@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="page-title">My Article</h1>
+            <h1 class="page-title">Browse Article</h1>
         </div>
     </div>
     <hr class="home-break">
@@ -25,9 +25,13 @@
                 <div class="card-body pb-1">
                     <!--  checks if post is unpublished -->
                     {% if post.status == 0 %}
+                    {% comment %}
                     <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                        <span class="draft">Draft</span></h2>
                     {% else %}
-                    <h2 class="card-title post-detail-title text-truncate">#</h2>
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                    <span class="draft">Published</span></h2>
+                    {% endcomment %}
                     {% endif %}
                     <p class="card-text">
                         <span><i class="far fa-heart "></i></span>
@@ -39,7 +43,7 @@
                     
                     <!-- Read more ......................................... -->
                     <div class="post_body">
-                        {{ post.method|safe|truncatewords:"50"|linebreaks }}
+                        {{ post.content|safe|truncatewords:"50"|linebreaks }}
                         <a href="{% url 'post_detail' post.slug %}">Read More</a>
                     <hr />
                         <p class="card-test text-muted h6">
