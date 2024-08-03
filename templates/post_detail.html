@@ -22,16 +22,10 @@
                         </div>
                         <p class="card-text">Author: {{ post.author }}</p>
                         <div class="mb-5">
-                           
-                            <p>
-                                <span><i class="far fa-clock pr-2"> </i></span>
-                                <span>Published: {{ post.publish_time }}</span>
-                            </p>
                             <p>
                                 <span><i class="far fa-calendar pr-2"> </i></span>
                                 <span>Created: {{ post.created_on }}</span>
                             </p>
-  
                         </div>
                         <!-- post action buttons -->
                         <div class="action-buttons-outer d-block">
@@ -77,7 +71,7 @@
                         Subtitle
                     </h5>
                     <div class="card-body">
-                        <p class="card-text">{{ post.method | safe }}</p>
+                        <p class="card-text">{{ post.subtitle | safe }}</p>
                     </div>
                 </div>
             </div>
