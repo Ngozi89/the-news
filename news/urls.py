@@ -28,6 +28,6 @@ urlpatterns = [
         'postdetail/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'
         ),
     path(
-        'like/<slug:slug>', views.PostLike.as_view(), name='post_like'
+        'like/<slug:slug>', views.PostLike.as_view(), name='newspost_like'
         ),
 ]
