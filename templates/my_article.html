@@ -22,42 +22,26 @@
               <img src=" {{ post.featured_image.url }}" alt="featured image" class="card-img-top">
                 {% endif %}
                 <div class="card-body pb-1">
-                    <!--  checks if post is unpublished -->
+                    <!--  checks post status -->
                     {% if post.status == 0 %}
                     {% comment %}
                     <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
-                        <span class="draft">Draft</span>
+                        <span><i class="far fa-bookmark pr-2"></i></span>
+                        <span class="draft">Waiting</span>
                     </h2>
-                    {% else %}
-                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
-                    <span class="draft">Published</span></h2>
-                    {% endcomment %}
-                    {% endif %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}</h2>
                     <p class="card-text">
                         <span><i class="far fa-clock pr-2"></i></span>
-                        <span>Created On: {{ post.created_on }}</span>
+                        <span>Pub Time: {{ post.publish_time }}</span>
                     </p>
                     <a href="{% url 'post_detail' post.slug %}" class="stretched-link"
                         aria-label="post-detail"></a>
-
-                    <!-- Read more ......................................... -->
-                    <div class="post_body">
-                        {{ post.content|safe|truncatewords:"50"|linebreaks }}
-                        <a href="{% url 'post_detail' post.slug %}">Read More</a>
-                    <hr/>
-                        <p class="card-test text-muted h6">
-                        {{ post.created_on}}
-                        <i class="far fa-heart"> </i>
-                        {{ post.number_of_likes }}
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
-        {% if forloop.counter|divisibleby:4 %}
     </div>
-    <div class="row">{% endif %} {% endfor %}</div>
 </div>
 {% include "paginator.html" %}
+{% endif %}
 
 {% endblock %}

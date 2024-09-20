@@ -18,11 +18,18 @@
             <div class="card card-detail post-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in post.image.url %}
                     <img class="card-img-top" alt="placeholder image"
-                        src="">
+                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                 {% else %}
-                    <img src=" {{ post.image.url }}" alt="post image" class="card-img-top">
+                    <img src=" {{ post.featured_image.url }}" alt="post image" class="card-img-top">
                 {% endif %}
                 <div class="card-body pb-1">
+                    <!--  checks post status -->
+                    {% if post.status == 0 %}
+                    {% comment %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                        <span><i class="far fa-bookmark pr-2"></i></span>
+                        <span class="draft">Waiting</span>
+                    </h2>
                     <h2 class="card-title post-detail-title text-truncate">{{ post.title }}</h2>
                     <p class="card-text">
                         <span><i class="far fa-clock pr-2"></i></span>
