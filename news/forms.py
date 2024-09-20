@@ -13,7 +13,8 @@ class ArticleForm(forms.ModelForm):
         fields = [
             'title',
             'subtitle', 
-            'content', 
+            'content',
+            'pub_time',
             'featured_image',
         ]
 

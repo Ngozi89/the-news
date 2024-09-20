@@ -5,7 +5,7 @@ from django.urls import reverse
 from django_extensions.db.fields import AutoSlugField
 
 
-STATUS = ((0, "Draft"), (1, "Pulished"))
+STATUS = ((0, "Waiting"), (1, "Pulished"))
 
 
 # Create post models.
@@ -13,15 +13,19 @@ class Post(models.Model):
     title = models.CharField(max_length=70, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="news_post")
+        User, on_delete=models.CASCADE, related_name="news_posts"
+    )
     updated_on = models.DateTimeField(auto_now=True)
-    subtitle = models.CharField(max_length=120, null=True)
-    content = models.TextField(blank=True, null=True)
+    subtitle = models.TextField(blank=True, null=True, default=None)
+    content = models.TextField(blank=True, null=True, default=None)
+    pub_time = models.CharField(max_length=10, default=None)
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    bookmarks = models.ManyToManyField(
+        User, related_name='bookmark', default=None, blank=True)
     likes = models.ManyToManyField(
-        User, related_name='newspost_like', blank=True)
+        User, related_name='news_likes', blank=True)
 
     class Meta:
         ordering = ["-created_on"]

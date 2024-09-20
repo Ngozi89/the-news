@@ -23,16 +23,7 @@
               <img src=" {{ post.featured_image.url }}" alt="featured image" class="card-img-top">
                 {% endif %}
                 <div class="card-body pb-1">
-                    <!--  checks if post is unpublished -->
-                    {% if post.status == 0 %}
-                    {% comment %}
-                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
-                        <span class="draft">Draft</span></h2>
-                    {% else %}
-                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
-                    <span class="draft">Published</span></h2>
-                    {% endcomment %}
-                    {% endif %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ news_post.title }}</h2>
                     <p class="card-text">
                         <span><i class="far fa-heart "></i></span>
                        <span><i class="far fa-clock pr-2"></i></span>
