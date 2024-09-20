@@ -24,13 +24,29 @@
                         <div class="mb-5">
                             <p>
                                 <span><i class="far fa-calendar pr-2"> </i></span>
-                                <span>Created: {{ post.created_on }}</span>
+                                <span><i class="far fa-clock pr-2"></i></span>
+                                <span>Pub Time: {{ post.publish_time }}</span>
                             </p>
                         </div>
-                        <!-- post action buttons -->
+                        <!-- Action buttons bookmark -->
                         <div class="action-buttons-outer d-block">
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'post_bookmarks' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if bookmarked  %}
+                                <button class="action-btn btn btn-info" type="submit" name="newspost_id"
+                                    value="{{post.slug}}" aria-label="bookmark-outline">
+                                    <i class="fas fa-bookmark"></i></button>
+                                {% else %}
+                                <button class="action-btn btn btn-info" type="submit" name="newspost_id"
+                                    value="{{post.slug}}" aria-label="bookmark-solid"><i
+                                        class="far fa-bookmark"></i></button>
+                                {% endif %}
+                            </form>
+                            {% endif %}
+                            <!-- Action buttons bookmark-->
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_likes' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked  %}
                                 <button class="action-btn btn btn-info" type="submit" name="newspost_id"
