@@ -23,7 +23,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     bookmarks = models.ManyToManyField(
-        User, related_name='bookmark', default=None, blank=True)
+        User, default=None, related_name='news_bookmarks', blank=True)
     likes = models.ManyToManyField(
         User, related_name='news_likes', blank=True)
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path("myarticle/", views.MyArticle.as_view(), name="my_article"),
     path('about/', views.about, name="about"),
     path('policy/', views.policy, name="policy"),
+    path('bookmarked/', views.Bookmarked.as_view(), name='bookmarked')
     path(
         'comments/<int:pk>/update/', views.UpdateComment.as_view(), name='edit'
         ),
@@ -28,6 +29,9 @@ urlpatterns = [
         'postdetail/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'
         ),
     path(
-        'like/<slug:slug>', views.PostLike.as_view(), name='newspost_like'
+        'bookmarks/<slug:slug>', views.PostBookmark.as_view(), name='news_bookmarks'
+        ),
+    path(
+        'likes/<slug:slug>', views.PostLike.as_view(), name='news_likes'
         ),
 ]
