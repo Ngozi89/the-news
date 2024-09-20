@@ -30,6 +30,9 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
+        bookmarked = False
+        if post.bookmarks.filter(id=self.request.user.id).exists():
+            bookmarked = True,
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -41,6 +44,7 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "commented": False,
+                "bookmarked": bookmarked,
                 "liked": liked,
                 "comment_form": CommentForm()
             },
@@ -51,6 +55,9 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
+        bookmarked = False
+        if post.bookmarks.filter(id=self.request.user.id).exists():
+            bookmarked = True,
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -253,9 +260,43 @@ class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView)
 
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
+class PostBookmark(LoginRequiredMixin, View):
+    """
+    Allows a logged in user to bookmark post.
+    """
+    def post(self, request, slug):
+        """
+        Checks if user exists in Post field database.
+        If they exist remove them or add them to the database.
+        """
+        post = get_object_or_404(Post, slug=slug)
+        if post.bookmarks.filter(id=request.user.id).exists():
+            post.bookmarks.remove(request.user)
+            messages.success(self.request, 'Post removed from bookmarks')
+        else:
+            post.bookmarks.add(request.user)
+            messages.success(self.request, 'Post added to bookmarks')
 
-class PostLike(View):
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+class Bookmarked(LoginRequiredMixin, generic.ListView):
+    """
+    Allows logged in users view their bookmarked posts.
+    """
+    model = Post
+    template_name = 'bookmarked.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        """Get queryset to filter user bookmarks"""
+        return Post.objects.filter(bookmarks=self.request.user.id)
+
+
+class PostLike(LoginRequiredMixin View):
+    """
+    Allows a logged in user to like post.
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
