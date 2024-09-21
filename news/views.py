@@ -293,7 +293,7 @@ class Bookmarked(LoginRequiredMixin, generic.ListView):
         return Post.objects.filter(bookmarks=self.request.user.id)
 
 
-class PostLike(LoginRequiredMixin View):
+class PostLike(LoginRequiredMixin, View):
     """
     Allows a logged in user to like post.
     """
