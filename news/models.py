@@ -11,9 +11,9 @@ STATUS = ((0, "Waiting"), (1, "Pulished"))
 # Create post models.
 class Post(models.Model):
     title = models.CharField(max_length=70, unique=True)
-    slug = AutoSlugField(populate_from='title', unique=True)
+    slug = AutoSlugField(populate_from="title", unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="news_posts"
+        User, on_delete=models.CASCADE, related_name="news_post"
     )
     updated_on = models.DateTimeField(auto_now=True)
     subtitle = models.TextField(blank=True, null=True, default=None)
@@ -23,9 +23,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     bookmarks = models.ManyToManyField(
-        User, default=None, related_name='news_bookmarks', blank=True)
+        User, default=None, related_name="news_bookmark", blank=True)
     likes = models.ManyToManyField(
-        User, related_name='news_likes', blank=True)
+        User, related_name="news_like", blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -37,6 +37,10 @@ class Post(models.Model):
         # Add string that returns representation of an object.
     def __str__(self):
         return f"{self.title}"
+    
+     # Returns total number of bookmarks on a post.
+    def number_of_bookmarks(self):
+        return self.bookmarks.count()
         
         # Returns total number of likes on a post.
     def number_of_likes(self):
