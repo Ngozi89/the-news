@@ -1,10 +1,10 @@
 /* Google fonts*/
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* General styling*/
 body {
-    font-family: Lato, sans-serif;
-    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
     background-color: #f9fafc;
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 .hero-text {
-    font-family: 'Lexend', sans-serif;
+    font-family: "Roboto Mono", monospace;
     font-size: 50px;
     color: #442E10;
 }
@@ -70,7 +70,7 @@ body {
 }
 
 .feature-title {
-    font-family: Lato, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 30px;
     color: #0000FF;
     padding-top: 10px;
@@ -239,14 +239,16 @@ body {
     font-size: 20px;
 }
 
-.signup input, .login input {
+.signup input, 
+.login input {
     width: 90%;
     border: 1px solid #D8B646;
     padding: 5px;
     margin: 5px 0 10px 0;
 } 
 
-.signup label, .login label {
+.signup label, 
+.login label {
     display: block;
     text-align: center;
     color: #442E10;
