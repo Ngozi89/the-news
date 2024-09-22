@@ -29,9 +29,9 @@ urlpatterns = [
         'postdetail/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'
         ),
     path(
-        'bookmarks/<slug:slug>', views.PostBookmark.as_view(), name='post_bookmarks'
+        'bookmarks/<slug:slug>', views.PostBookmark.as_view(), name='post_bookmark'
         ),
     path(
-        'likes/<slug:slug>', views.PostLike.as_view(), name='post_likes'
+        'likes/<slug:slug>', views.PostLike.as_view(), name='post_like'
         ),
 ]
