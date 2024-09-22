@@ -1,49 +1,71 @@
-{% extends "base.html" %} 
-{% load static %}
-{% block title %} Home {% endblock title %}
-
+{% extends "base.html" %}
+{% block title %} The News | Home {% endblock %}
 {% block content %}
-{% include 'main/hero.html' %}
-<br>
-<br>
 
-{% comment %} Newsletter section {% endcomment %}
-<section class="position-relative newsletter-section overflow-hidden mt-auto">
-  <div class="sky"></div>
-  <div class="bg-dark text-white w-100 h-100 newsletter__text-container">
-    <div class="h-100 d-flex flex-column align-items-start justify-content-center newsletter__text">
-      <div class="container newsletter_content">
-        <h3 class="h3">Be the first to get our news update by subscribing to our newsletter</h3>
-        
-        <div class="form-container">
-          <form
-            action="https://herokuapp.us13.list-manage.com/subscribe/post?u=8e18e22de8a3bae6322573606&amp;id=6a71b13ee5&amp;f_id=00f05fe3f0"
-            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-            class="validate w-100 input-container" target="_self">
-            <div class="d-flex justify-content-start">
-              <div class="col-8 col-md-9 px-0 mc-field-group" id="mc_embed_signup_scroll">
-                <input type="email" name="EMAIL" class="required email h-100 w-100" id="mce-EMAIL" required=""
-                  placeholder="Email">
-                <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
-              </div>
-              <div class="col-4 col-md-3 px-0">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary w-100"
-                  value="Subscribe">
+<!-- Feature -->
+<section>
+    <div class="container px-2 py-3">
+        <div class="row flex-md-row-reverse py-3 m-0">
+            <div class="col-12 col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
+                <img class="post-png" src="https://res.cloudinary.com/dflo67f1g/image/upload/v1727014132/logo_elyl8n.png"
+                    class="post-png fixed-top" alt="post-png">
+            </div>
+            {% if user.is_authenticated %}
+            <div class="col-md-5 col-lg-7 hero-text-outer text-center">
+                <h1 class="mt-4 mb-2 hero-text"> Bringing you news and entertainments to your doorstep.</h1>
+                <div class="lead mt-4">
+                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
+                        href="{% url 'browse_article' %}">Browse!</a>
+                </div>
+                <div class="feature-image mb-2">
+                  <a class="browse-article" href="#"><i class="fas fa-search fa-6x"></i></a>
               </div>
             </div>
-            <div id="mce-responses" class="clear foot">
-              <div class="response bg-white text-error" id="mce-error-response" style="display: none;"></div>
-              <div class="response text-light mt-1" id="mce-success-response" style="display: none;"></div>
+            {% else %}
+            <div class="col-md-5 col-lg-7 hero-text-outer text-center">
+                <h1 class="mt-4 mb-2 hero-text"> Your news outlet.. create an account!</h1>
+                <div class="lead mt-4">
+                     <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
+                        href="{%  url 'account_signup' %}">Sign Up!</a>
+                </div>
             </div>
-            <div aria-hidden="true" style="position: absolute; left: -5000px;">
-              <input type="text" name="b_5a6bfff012a1e25e252598c31_31e6c2cf6a" tabindex="-1" value="">
-            </div>
-          </form>
+            {% endif %}
         </div>
+    </div>
+</section>
+<section class="container px-0">
+    <div class="container-fluid feature-image-outer">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-2 col-sm-4">
+              {% if user.is_authenticated %}
+                <div class="feature-image mb-2">
+                    <a class="browse-post" href="{% url 'browse_article' %}"><i class="fas fa-thin fa-pen-to-square"></i></a>
+                </div>
+                <div>
+                    <h3 class="feature-title"><a href="{% url 'add_article' %}">Create!</a></h3>
+                    <p class="feature-text">
+                        Add new post, share your story.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-2 col-sm-4">
+                <div class="feature-image mb-2">
+                    <a class=" browse-post"><i class="fas fa-user fa-6x"></i></a>
+                    <h3 class="feature-title"><a>Profile</a></h3>
+                    <p class="feature-text">Sign in and view your post!<a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
+                      href="{%  url 'my_article' %}">My Article</a>
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-4 mb-2 col-sm-4">
+              <h3 class="feature-title"><a href="{% url 'add_article' %}">Read</a></h3>
+              <p class="feature-text">
+                Your news outlet story,!
+              </p>
+            </div>
       </div>
     </div>
-  </div>
 </section>
-<script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 
-{% endblock %}
+{%endblock%}
