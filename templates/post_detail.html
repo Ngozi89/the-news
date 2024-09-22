@@ -10,7 +10,7 @@
             <div class="row no-gutters">
                 <div class="col-12 col-md-4">
                     {% if "placeholder" in post.featured_image.url %}
-                    <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                    <img src="https://res.cloudinary.com/dflo67f1g/image/upload/v1727014132/logo_elyl8n.png"
                         class="post-detail-img" alt="placeholder image">
                     {% else %}
                     <img src=" {{ post.feature_image.url }}" alt="post image" class="post-detail-img">
@@ -24,7 +24,6 @@
                         <p class="card-text">Author: {{ post.author }}</p>
                         <div class="mb-5">
                             <p>
-                                <span><i class="far fa-calendar pr-2"> </i></span>
                                 <span><i class="far fa-clock pr-2"></i></span>
                                 <span>Pub Time: {{ post.publish_time }}</span>
                             </p>
@@ -32,7 +31,7 @@
                         <!-- Action buttons bookmark -->
                         <div class="action-buttons-outer d-block">
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_bookmarks' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'post_bookmark' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if bookmarked  %}
                                 <button class="action-btn btn btn-info" type="submit" name="newspost_id"
@@ -45,9 +44,10 @@
                                 {% endif %}
                             </form>
                             {% endif %}
-                            <!-- Action buttons bookmark-->
+
+                            <!-- Action buttons like-->
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_likes' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked  %}
                                 <button class="action-btn btn btn-info" type="submit" name="newspost_id"
@@ -85,10 +85,10 @@
             <div class="col">
                 <div class="card mb-3 post-detail-card">
                     <h5 class="card-header post-detail-header">
-                        News details
+                        Subtitle
                     </h5>
                     <div class="card-body">
-                        <p class="card-text">{{ post.content | safe }}</p>
+                        <p class="card-text">{{ post.subtitle | safe }}</p>
                     </div>
                 </div>
             </div>
@@ -98,9 +98,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-3 post-detail-card">
-                    <h5 class="card-header post-detail-header">News subtitle</h5>
+                    <h5 class="card-header post-detail-header">News details</h5>
                     <div class="card-body">
-                        <div class="card-text">{{ post.subtitle | safe }}</div>
+                        <div class="card-text">{{ post.content | safe }}</div>
                     </div>
                 </div>
             </div>

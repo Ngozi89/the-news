@@ -17,10 +17,10 @@
 <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
     <div class="card card-detail post-card mb-3 shadow-sm mx-auto mx-sm-2">
         {% if "placeholder" in post.featured_image.url %}
-        <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+        <img src="https://res.cloudinary.com/dflo67f1g/image/upload/v1727014132/logo_elyl8n.png"
         class="card-img-top" alt="placeholder image">
         {% else %}
-        <img src=" {{ post.featured_image.url }}" alt="featured image" class="card-img-top">
+        <img src="{{ post.featured_image.url }}" alt="featured image" class="card-img-top">
         {% endif %}
         <div class="card-body pb-1">
                 <!--  checks post status -->
@@ -36,7 +36,6 @@
                 </p>
                 <a href="{% url 'post_detail' post.slug %}" class="stretched-link"
                     aria-label="post-detail"></a>
-                {% endif %}
             </div>
         </div>
     </div>
