@@ -39,7 +39,7 @@
             <div class="col-12 col-md-4 mb-2 col-sm-4">
               {% if user.is_authenticated %}
                 <div class="feature-image mb-2">
-                    <a class="browse-post" href="{% url 'browse_article' %}"><i class="fas fa-thin fa-pen-to-square"></i></a>
+                    <a class="browse-post" href="{% url 'browse_article' %}"><i class="fas fa-thin fa-pen-to-square fa-2x"></i></a>
                 </div>
                 <div>
                     <h3 class="feature-title"><a href="{% url 'add_article' %}">Create!</a></h3>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-md-4 mb-2 col-sm-4">
                 <div class="feature-image mb-2">
-                    <a class=" browse-post"><i class="fas fa-user fa-6x"></i></a>
+                    <a class=" browse-post"><i class="fas fa-user fa-2x"></i></a>
                     <h3 class="feature-title"><a>Profile</a></h3>
                     <p class="feature-text">Sign in and view your post!<a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
                       href="{%  url 'my_article' %}">My Article</a>
@@ -59,11 +59,25 @@
                 {% endif %}
             </div>
             <div class="col-12 col-md-4 mb-2 col-sm-4">
-              <h3 class="feature-title"><a href="{% url 'add_article' %}">Read</a></h3>
-              <p class="feature-text">
-                Your news outlet story,!
-              </p>
+              <div class="feature-image mb-2">
+                <a class="browse-post"><i class="fas fa-sharp fa-thin fa-globe fa-2x"></i></a>
             </div>
+            <div>
+                <h3 class="feature-title"><a href="{% url 'add_article' %}">Read</a></h3>
+                <p class="feature-text">
+                  Your news outlet story,!
+                </p>
+            </div>     
+      </div>
+      <div class="col-12 col-md-4 mb-2 col-sm-4">
+        <div class="feature-image mb-2">
+          <a class="browse-post"><i class="fas fa-thin fa-address-card fa-1x"></i></a>
+      </div>
+      <div>
+          <h3 class="feature-title"><a href="{% url 'policy' %}">About</a></h3>
+          <p class="feature-text">
+            About Us
+          </p>
       </div>
     </div>
 </section>
