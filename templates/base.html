@@ -74,30 +74,30 @@
     </div>
 </nav>
 </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    {% if messages %}
-                    <!-- Create for loop to iterate through our messages-->
-                    {% for message in messages %}
-                    <!-- Toast -->
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
-            {% endfor %}
-            <!-- End toast-->
-            </div>
-            {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+        {% if messages %}
+        <!-- Create for loop to iterate through our messages-->
+        {% for message in messages %}
+        <!-- Toast -->
+        {% with message.level as level %}
+        {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+        <!-- End toast-->
         </div>
+        {% endif %}
     </div>
+</div>
 </div>
 <main class="flex-shrink-0 main-bg">
     {% block content %}
