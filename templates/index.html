@@ -65,7 +65,7 @@
             <div>
                 <h3 class="feature-title"><a href="{% url 'add_article' %}">Read</a></h3>
                 <p class="feature-text">
-                  Your news outlet story,!
+                  Your news outlet story!
                 </p>
             </div>     
       </div>
@@ -74,9 +74,17 @@
           <a class="browse-post"><i class="fas fa-thin fa-address-card fa-1x"></i></a>
       </div>
       <div>
-          <h3 class="feature-title"><a href="{% url 'policy' %}">About</a></h3>
+          <h3 class="feature-title"><a href="{% url 'about' %}">About</a></h3>
           <p class="feature-text">
             About Us
+          </p>
+      </div>
+        <div class="feature-image mb-2">
+          <a class="browse-post"><i class="fas fa-regular fa-circle-info fa-1x"></i></a>
+      </div>
+          <h3 class="feature-title"><a href="{% url 'policy' %}">Policy</a></h3>
+          <p class="feature-text">
+            Our policy
           </p>
       </div>
     </div>
