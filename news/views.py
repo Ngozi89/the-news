@@ -5,7 +5,7 @@ from .models import Post, Comment, Profile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CommentForm, ProfileForm, ArticleForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 
@@ -136,7 +136,7 @@ class MyArticle(LoginRequiredMixin, generic.ListView):
         return Post.objects.filter(author=self.request.user)
 
 
-class EditArticle(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+class EditArticle(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     """
     This view enables logged in users to edit their own posts
     """
@@ -171,7 +171,7 @@ class EditArticle(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, 
         )
 
 
-class DeleteArticle(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+class DeleteArticle(LoginRequiredMixin,  generic.DeleteView):
     """
     This view enables logged in users to delete their own posted articles.
     """
@@ -205,7 +205,7 @@ class DeleteArticle(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView)
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 
-class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+class UpdateComment(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     """
     This view is used to allow logged in users to edit their own comments
     """
@@ -229,7 +229,7 @@ class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 
-class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+class DeleteComment(LoginRequiredMixin, generic.DeleteView):
     """
     This view is used to allow logged in users to delete their own comments
     """
