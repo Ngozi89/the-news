@@ -6,8 +6,12 @@ from django_summernote.widgets import SummernoteWidget
 
 class ArticleForm(forms.ModelForm):
     """
-    Create Article Form
+    Create Post/Article Form
     """
+    def __init__(self, *args, **kwargs):
+        super(ArticleForm, self).__init__(*args, **kwargs)
+        self.fields['details'].widget = forms.Textarea(attrs={'rows': 3})
+    
     class Meta:
         model = Post
         fields = [
@@ -20,14 +24,22 @@ class ArticleForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    
+    """
+    Create Profile Form
+    """
     class Meta:
             model = Profile
             fields = [ 'user', 'bio',]
 
 
-# create form class
 class CommentForm(forms.ModelForm):
+    """
+    Comment create form class
+    """
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['body'].widget = forms.Textarea(attrs={'rows': 3})
+    
     class Meta:
         model = Comment
         fields = ('name', 'body',)      
