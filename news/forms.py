@@ -8,10 +8,6 @@ class ArticleForm(forms.ModelForm):
     """
     Create Post/Article Form
     """
-    def __init__(self, *args, **kwargs):
-        super(ArticleForm, self).__init__(*args, **kwargs)
-        self.fields['details'].widget = forms.TextareaTextarea(attrs={'rows': 3})
-    
     class Meta:
         model = Post
         fields = [
