@@ -10,13 +10,13 @@ STATUS = ((0, "Waiting"), (1, "Pulished"))
 
 # Create post models.
 class Post(models.Model):
-    title = models.CharField(max_length=70, unique=True)
+    title = models.CharField(max_length=250, unique=True)
     slug = AutoSlugField(populate_from="title", unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news_post"
     )
-    subtitle = models.TextField(max_length=250, default=None)
-    details = models.TextField(max_length=1040, default=None)
+    subtitle = models.TextField(max_length=500, default=None)
+    details = models.TextField(max_length=5500, default=None)
     pub_time = models.CharField(max_length=10, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
