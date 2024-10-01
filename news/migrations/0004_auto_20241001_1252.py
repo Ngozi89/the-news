@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='details',
-            field=models.TextField(default='Blog_post'),
+            field=models.TextField(default=None, max_length=1040),
         ),
     ]
