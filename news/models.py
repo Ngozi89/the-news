@@ -15,13 +15,13 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news_post"
     )
-    updated_on = models.DateTimeField(auto_now=True)
-    subtitle = models.TextField(blank=True, null=True, default=None)
-    details = models.TextField(default=None, blank=True, null=True)
+    subtitle = models.TextField(max_length=250, default=None)
+    details = models.TextField(max_length=1040, default=None)
     pub_time = models.CharField(max_length=10, default=None)
-    featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    featured_image = CloudinaryField('image', default='placeholder')
     bookmarks = models.ManyToManyField(
         User, default=None, related_name="news_bookmark", blank=True)
     likes = models.ManyToManyField(

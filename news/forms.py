@@ -10,7 +10,7 @@ class ArticleForm(forms.ModelForm):
     """
     def __init__(self, *args, **kwargs):
         super(ArticleForm, self).__init__(*args, **kwargs)
-        self.fields['details'].widget = forms.Textarea(attrs={'rows': 3})
+        self.fields['details'].widget = forms.TextareaTextarea(attrs={'rows': 3})
     
     class Meta:
         model = Post
@@ -19,8 +19,13 @@ class ArticleForm(forms.ModelForm):
             'subtitle', 
             'details',
             'pub_time',
+            'status',
             'featured_image',
         ]
+        widgets = {
+            'subtile': SummernoteWidget(),
+            'details': SummernoteWidget(),
+        }
 
 
 class ProfileForm(forms.ModelForm):
