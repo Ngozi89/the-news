@@ -3,10 +3,6 @@ body {
     background-color: #f9fafc;
 }
 
-.content {
-    min-height: calc(100vh - 90px);
-}
-
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
