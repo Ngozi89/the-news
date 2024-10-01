@@ -17,7 +17,7 @@ class Post(models.Model):
     )
     updated_on = models.DateTimeField(auto_now=True)
     subtitle = models.TextField(blank=True, null=True, default=None)
-    details = models.TextField(default="Blog_post")
+    details = models.TextField(default=None, blank=True, null=True)
     pub_time = models.CharField(max_length=10, default=None)
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
