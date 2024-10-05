@@ -7,7 +7,7 @@ from django_summernote.widgets import SummernoteWidget
 class ArticleForm(forms.ModelForm):
     """
     Create Post/Article Form
-    """
+    """ 
     class Meta:
         model = Post
         fields = [

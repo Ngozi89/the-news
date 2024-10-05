@@ -16,7 +16,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="news_post"
     )
     subtitle = models.TextField(max_length=500, default=None)
-    details = models.TextField(max_length=5500, default=None)
+    details = models.TextField(default=None)
     pub_time = models.CharField(max_length=10, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
