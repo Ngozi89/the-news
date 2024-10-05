@@ -1,13 +1,12 @@
 /* General styling*/
 body {
+    font-family: Lato, sans-serif;
+    font-weight: 450;
     background-color: #f9fafc;
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ff0000;
+.content {
+    min-height: calc(100vh - 90px);
 }
 
 .red-o {
@@ -15,15 +14,15 @@ body {
     font-size: 50px;
 }
 
-.blue-text {
-    color: #0000FF;
-    font-weight: 400;
+.red-text {
+    color: #ff0022;
+    font-weight: 350;
 }
 
 .page-title {
     padding-top: 5px;
-    color: #0000FF;
-    font-weight: 400;
+    color: #ff0022;
+    font-weight: 300;
     text-align: center;
 }
 
@@ -32,14 +31,18 @@ body {
 }
 
 .navbar ul a {
-    color: #0000FF;
+    color: #0000ff;
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
 }
 
 .navbar a:hover {
-    color: #442E10;
+    color: #442e10;
+}
+
+.Home {
+    color: #0000ff;
 }
 
 .logo-img {
@@ -47,30 +50,30 @@ body {
 }
 
 .hero-text-outer {
-    background-color: #F4DDD8;
+    background-color: #ff0022;
     min-height: 200px;
 }
 
 .hero-text {
     font-family: "Roboto Mono", monospace;
     font-size: 50px;
-    color: #442E10;
+    color: #fff;
 }
 
 .home-break {
-    border-top: 1px solid #D8B646;
+    border-top: 1px solid #d8B646;
     margin: auto !important;
 }
 
 .feature-image {
     text-align: center;
-    color: #886363;
+    color: #ff0022;
 }
 
 .feature-title {
     font-family: "Roboto", sans-serif;
     font-size: 30px;
-    color: #0000FF;
+    color: #ff0022;
     padding-top: 10px;
     text-align: center;
 }
@@ -93,7 +96,7 @@ body {
 
 .card-detail {
     border: none;
-    color: #886363;
+    color: black;
 }
 
 .card {
@@ -101,8 +104,8 @@ body {
     background-color: transparent;
 }
 
-.post_body a {
-    color: #ff0000;
+.waiting {
+    color: red;
 }
 
 .post-detail-title {
@@ -114,11 +117,7 @@ body {
 }
 
 .browse-article {
-    color: #886363;
-}
-
-.created_on {
-    color: red;
+    color: #0000ff;
 }
 
 .post-title:first-letter {
@@ -130,7 +129,7 @@ body {
 }
 
 .post-detail-img {
-    max-height: 300px;
+    max-height: 450px;
     object-fit: cover;
     width: 100%;
 }
@@ -138,7 +137,7 @@ body {
 .post-detail-header {
     border: none;
     background-color: rgb(252, 247, 242);
-    color: #0000FF;
+    color: #ff0022;
 }
 
 .action-buttons-outer {
@@ -168,6 +167,7 @@ body {
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
+    color: black;
 }
 
 .post-subtitle {
@@ -186,7 +186,7 @@ body {
 }
 
 .add-post label {
-    color: #0000FF;
+    color: #0000ff;
     font-weight: bold;
 } 
 

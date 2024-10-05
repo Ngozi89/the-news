@@ -13,12 +13,8 @@
             {% if user.is_authenticated %}
             <div class="col-md-5 col-lg-7 hero-text-outer text-center">
                 <h1 class="mt-4 mb-2 hero-text"> Bringing you news and entertainments to your doorstep.</h1>
-                <div class="lead mt-4">
-                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
-                        href="{% url 'browse_article' %}">Browse!</a>
-                </div>
                 <div class="feature-image mb-2">
-                  <a class="browse-article" href="#"><i class="fas fa-search fa-6x"></i></a>
+                  <a class="browse-article" href="{% url 'browse_article' %}"><i class="fas fa-search fa-6x"></i></a>
               </div>
             </div>
             {% else %}
