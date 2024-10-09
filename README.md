@@ -1,7 +1,7 @@
 # News Mix Website (Milestone Project 4)
 ![mockup](readme/site-responsive.png)
 
-[News Mix](https://thenews-527458e708d0.herokuapp.com/) is an online news reporter and social advocates dedicated to bringing you news and happening around the globe from African perspective.
+[News Mix](https://thenews-527458e708d0.herokuapp.com/) is an online news reporter and personal publisher dedicated to bringing you news and happening around the globe from African perspective.
 
 ## Table of contents
 
@@ -14,8 +14,16 @@
     - [As a **returning user**](#as-a-returning-user)
   - [UAC](#uac)
     - [Home Page](#home-page)
-    - [Sign Up Page](#sign-up-page)
-    - [Sign In Page](#sign-in-page)
+    -  [Blog-Posts Page](#blog-posts-page)
+    -  [Add-Post Page](#add-post-page)
+     - [About Page](#about-page)
+     - [My-Page](#my-page)
+  - [Sign In](#user-icon)
+    - - [Log In Page](#log-in-page)
+    - - [Sign Up Page](#sign-up-page)
+    - - [My Post Page](#my-post)
+    - - [My Page](#my-page)
+    - - [Log Out Page](#log-out-page)
       - [User Goal](#user-goal)
       - [Website Goal](#website-goal)
     - [Posts Page](#posts-page)
@@ -43,7 +51,9 @@
   - [Content Moderation (uac 15)](#content-moderation-uac-15)
   - [JS Bundling](#js-bundling)
   - [**Feature considerations**](#feature-considerations)
-- [Testing](#testing)
+  - [Testing](#testing)
+  - [Bugs](#bugs)
+  - [Fixed bugs](#fixed-bugs)
   - [User Story Testing](#user-story-testing)
     - [Blog Host](#blog-host)
 - [Deployment](#deployment)
@@ -53,28 +63,29 @@
       - [Step 4](#step-4)
       - [Step 5](#step-5)
     - [Second step](#second-step)
+- [Credit](#credit)
+    - [Media](#media)
+    - [Images](#images)
+
 
 ## Purpose
 
 News Mix website is built using Django framework, which provides the backend functionality, such as user authentication, data management, and routing which handles the majority of the frontend. The website combines the power and flexibility of Django to deliver a smooth and responsive user experience.
 
-News Mix is a database-backed Django app for News and happenings around the world. The website is created with Design Thinking and Agile approch putting myself in users position.
+News Mix is a database-backed Django app for News and story telling. The website is created with Design Thinking and Agile approch putting myself in users position.
+
 User story was created as a guideline in adding the blog functionality
 
-The website provides all the essential features, such as creating a personal account, searching and filtering posts, the ability to add and manage posts, commenting on posts liking and unlike any post.
+The website provides all the essential features, such as creating a personal account, allowing users to write and publish their stories for others to read, adding and managing posts, commenting on posts, liking and unlike any post, and bookmarking posts.
 
 The website was developed as a Milestone Project#4 for the Code Institute's Full Stack Developer course.
 
-The live link to News Mix webpage can be found here - <https://thenews-527458e708d0.herokuapp.com/>
+The live link to Daily Digest webpage can be found here [Live-Link]
+
 
 # UX Design
 
 ## User stories
-
-Target audiences:
-
-- Aged 45 and above who are not too convansent with social media. (U)
-- Individuals who are interested in reading news and happenings around the world (I)
 
 ### As a **first time user**
 
@@ -84,30 +95,37 @@ Target audiences:
 - I want to create my personal account to see posts.
 - I want to create an account fast, but I want it to be secure.
 - I want to easily access a category of posts I need and to be able to search through them.
-- I want to open a post on a separate page to see all the details.
+- I want to open a post to see all the details.
 - I want to be able to create a post myself.
+- I want to like a post.
+- I want to be able to comment on a post.
+- I want to save posts that I find interesting.
 
 ### As a **returning user**
 
 - I want to be sure my data is protected.
-
+-
 - I want the server to recognise my device so I can login without entering my information again
-
+-
 - I want to access comments from any post on the website.
 
 - I want to be able to access the navbar.
 
 - I want posts to be paginated so it helps me remember on what page I saw something interesting or stay on the same page if I accidentally refresh the page or there are problems with the internet connection.
 
-- I want to be able to report comments that I find offensive, unsafe or inappropriate.
-
-- I want the comments to be moderated, so I don't need to report it.
+- I want the comments to be moderated.
 
 - I want to be able to write comments to give my opinion on any news
 
 - I want to be able to update and delete my posts.
 
 - I want to be able to reset my password if I forget it.
+
+
+## Target audiences:
+
+- Individuals who are interested in reading news and happenings around the world (I)
+
 
 ## UAC
 
@@ -155,7 +173,7 @@ User Acceptance Criteria based on the user stories:
 
 ### Home Page
 
-![](readme/home-page.png)
+![Home]()
 
 - Displays the main purpose and topic of the site.
 - Addresses questions and doubts the first-time users might have and provides a registration form.
