@@ -194,44 +194,12 @@ User Acceptance Criteria based on the user stories:
     > - Initiate future engagement, such as following on social media.
     > - Provide aesthetically pleasing user experience.
 
-### Sign Up Page
-
-![](readme/signup.png)
-
-- Allows user to sign up.
-
-    #### User Goal
-
-    > - Sign up.
-
-    #### Website Goal
-
-    >  - Allow the user to sign up easily.
-    >  - Provide aesthetically pleasing user experience.
-
-### Sign In Page
-
-![](readme/login.png)
-
-- Allows to sign in
-
-#### User Goal
-
-  > - Sign in.
-
-#### Website Goal
-
-  > - Allow the user to sign in easily.
-  > - Provide aesthetically pleasing user experience.
-
-### Posts Page
-
-![](readme/home-page.png)
+![News Posts page]()
 
 - Shows posts.
 - Allows users to easily find and access posts.
-- Allows opening each post on a separate page.
-- Available only for all users.
+- Allows opening each post.
+- Available for all users.
 
 #### User Goal
 
@@ -247,13 +215,14 @@ User Acceptance Criteria based on the user stories:
 
 ### Post Detail Page
 
-![](readme/postdetails.png)
+![Post-detail]()
 
 - Shows a post in detail including an image.
-- Allows to see and write comments about the post.
-- Allows like and dislike post.
-- Allows see the author name and published date.
-- Allows you to manage the post if you are the author.
+- Allows user to see and write comments about the post.
+- Allows user like and dislike post.
+- Allows user see the author name and published date.
+- Allows admin to manage the post if you are the author.
+- Allow user to save post
 - Available only for authenticated users.
 
 - #### User Goal
@@ -261,6 +230,7 @@ User Acceptance Criteria based on the user stories:
   > - See a post in detail.
   > - See comments other users left about the post.
   > - Leave your comments.
+  > - Save post.
   > - Manage the post, if you are the author.
 
 - #### Website Goal
@@ -269,14 +239,10 @@ User Acceptance Criteria based on the user stories:
   > - Allow the user to interact with the post.
   > - Provide aesthetically pleasing user experience.
 
-### Create/Update Post Page
+### Add Post 
 
-![](readme/create-post.png)
-
-- Creates a new post.
-- Allows updating an existing post.
-- Allows deleting a post.
-- Available only for authenticated users.
+- Allows User Create post.
+![Ada-post]().
 
 - #### User Goal
 
@@ -288,9 +254,14 @@ User Acceptance Criteria based on the user stories:
   > - Allow the user to create/update a post.
   > - Provide aesthetically pleasing user experience.
 
+### My Post
+
+- Shows post Created by registered user.
+![My-POst](media/mypost.png).
+
 ### Delete Post Page
 
-![](readme/delete-post.png)
+![Delete-post]()
 
 - Confirms if the user wants to delete their post.
 - Available only for authenticated users.
@@ -304,9 +275,52 @@ User Acceptance Criteria based on the user stories:
   > - Confirm with the user deletion of the post.
   > - Provide aesthetically pleasing user experience.
 
+### My Page
+
+- User profile page.
+![Profile]()
+
+### Bookmark
+
+- Shows post saved by registered user
+![Bookmark]()
+
+## Account
+
+### Sign Up Page
+
+![signup]()
+
+- Allows user to sign up.
+
+    #### User Goal
+
+    > - Sign up.
+
+    #### Website Goal
+
+    >  - Allow the user to sign up easily.
+    >  - Provide aesthetically pleasing user experience.
+
+### Sign In Page
+
+![login]()
+
+- Allows registered user to sign in
+
+#### User Goal
+
+  > - Sign in.
+
+#### Website Goal
+
+  > - Allow the user to sign in easily.
+  > - Provide aesthetically pleasing user experience.
+
+
 ### Footer ([uac 11](#uac11), [uac 12](#uac12), [uac 20](#uac20))
 
-![](readme/footer.png)
+![Footer]()
 
 The website's footer is designed to provide users with useful such as privacy policy which are important for users to be aware of as well social media link for users to follow and get more news update easy and faster.
 
@@ -335,7 +349,7 @@ The website is meant to have a simple layout and a clean design. The home page i
 
 ![Palette](readme/color.jpg)
 
-The colour scheme is red and white to create a visually appealing and cohesive design that is easily recognizable as being associated to news website.
+The colour scheme is red, blue and white to create a visually appealing and cohesive design that is easily recognizable as being associated to news website.
 
 # Features
 
@@ -454,6 +468,18 @@ I have tested this project code by
 ![urls.py](readme/tested-urls.png)
 ![admin.py](readme/tested-admin-file.png)
 
+### Bugs
+- Migration issue
+- Commenting (Reverse for 'update_comment' not found)
+![comment](readme/comment-bug.png)
+- Problem signing out
+
+### Fixed bugs
+- Migration issue fixed led to database change.
+
+### Remaining bug
+- None
+
 ### Blog Host
 
 - Creates a new post.
@@ -512,6 +538,6 @@ This project was deployed using Code Institute's mock terminal for Heroku and th
 # Credits
 
 - Matt Rudge for I think before I blog workthrough project.
-- News Mix news blog was built with knowledge from love sandwitches walkthrough project created by Anna Graves.
+- Slack Overflow
+- Daily digest blog website https://github.com/Madu-J/daily-digest01 (edit and delete comment)
 - SaharaReporters for Privacy policy.
-- https://github.com/Madu-J/daily-digest01 (edit and delete comment)
