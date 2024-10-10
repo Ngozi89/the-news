@@ -205,13 +205,13 @@ class DeleteArticle(LoginRequiredMixin,  generic.DeleteView):
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 
-class UpdateComment(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
+class EditComment(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     """
     This view is used to allow logged in users to edit their own comments
     """
     model = Comment
     form_class = CommentForm
-    template_name = 'edit.html'
+    template_name = 'edit_comment.html'
     success_message = "Comment edited successfully"
 
     def form_valid(self, form):
@@ -234,7 +234,7 @@ class DeleteComment(LoginRequiredMixin, generic.DeleteView):
     This view is used to allow logged in users to delete their own comments
     """
     model = Comment
-    template_name = 'delete.html'
+    template_name = 'delete_comment.html'
     success_message = "Comment deleted successfully"
 
     def test_func(self):
@@ -256,6 +256,7 @@ class DeleteComment(LoginRequiredMixin, generic.DeleteView):
         post = self.object.post
 
         return reverse_lazy('post_detail', kwargs={'slug': post.slug})
+
 
 class PostBookmark(LoginRequiredMixin, View):
     """

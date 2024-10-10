@@ -124,7 +124,7 @@
                           </span>
                           {% if user.is_authenticated and user.username == comment.name %}
                           <span class="comment-action-btn pl-2">
-                              <a href="{% url 'update_comment' comment.id %}" aria-label="edit-comment"><i
+                              <a href="{% url 'edit_comment' comment.id %}" aria-label="edit-comment"><i
                                       class="fas fa-edit link-primary"></i></a>
                               <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i
                                       class="fas fa-times"></i></a>
