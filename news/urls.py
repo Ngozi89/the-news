@@ -12,7 +12,9 @@ urlpatterns = [
     path("policy/", views.policy, name="policy"),
     path("comments/<int:pk>/edit/", views.EditComment.as_view(), name="edit_comment"),
     path("comments/<int:pk>/delete/", views.DeleteComment.as_view(), name="delete_comment"),
-    path("article/<int:pk>/delete/", views.DeleteArticle.as_view(), name="delete_article"),
+    path(
+        "post/<int:pk>/delete/", views.DeletePost.as_view(), name="delete_post"
+        ),
     path("bookmarks/<slug:slug>/", views.PostBookmark.as_view(), name="post_bookmark"),
     path("likes/<slug:slug>/", views.PostLike.as_view(), name="post_like"),
     path("postdetail/<slug:slug>/", views.PostDetail.as_view(), name="post_detail"),
