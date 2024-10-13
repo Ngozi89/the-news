@@ -28,9 +28,9 @@
 <header>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div class="container">
             <span class="the-news">
-                <a class="navbar-brand" href="{% url 'home' %}"><span class="red-o mr-2">News</span><span class="bold">
+                <a class="navbar-brand" href="{% url 'home' %}"><span class="red-o">News</span><span class="bold">
                     Mix</span>
                     <img class="logo-img" src="https://res.cloudinary.com/dflo67f1g/image/upload/v1727014132/logo_elyl8n.png" 
                     alt="headerlogo">
@@ -43,7 +43,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <form method="GET" action="{% url 'home' %}" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 w-75" type="search" name="q" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2 w-75" type="search" name="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-none my-2 my-sm-0" aria-label="search" type="submit"><i
                     class="fa fa-search"></i></button>
               </form>
