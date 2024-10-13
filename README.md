@@ -80,7 +80,7 @@ The website provides all the essential features, such as creating a personal acc
 
 The website was developed as a Milestone Project#4 for the Code Institute's Full Stack Developer course.
 
-The live link to Daily Digest webpage can be found here [Live-Link]
+The live link to Daily Digest webpage can be found here [Live-Link] <https://thenews-527458e708d0.herokuapp.com/>
 
 
 # UX Design
@@ -173,7 +173,7 @@ User Acceptance Criteria based on the user stories:
 
 ### Home Page
 
-![Home]()
+![Home](readme/home.png)
 
 - Displays the main purpose and topic of the site.
 - Addresses questions and doubts the first-time users might have and provides a registration form.
@@ -194,7 +194,7 @@ User Acceptance Criteria based on the user stories:
     > - Initiate future engagement, such as following on social media.
     > - Provide aesthetically pleasing user experience.
 
-![News Posts page]()
+![News Posts page](readme/all-news.png)
 
 - Shows posts.
 - Allows users to easily find and access posts.
@@ -215,8 +215,8 @@ User Acceptance Criteria based on the user stories:
 
 ### Post Detail Page
 
-![Post-detail]()
-
+![Post-detail](readme/news-details.png)
+[user-panel](readme/signin-user-panel.png)
 - Shows a post in detail including an image.
 - Allows user to see and write comments about the post.
 - Allows user like and dislike post.
@@ -242,7 +242,8 @@ User Acceptance Criteria based on the user stories:
 ### Add Post 
 
 - Allows User Create post.
-![Ada-post]().
+![Ada-post](readme/add-post.png)
+![Ada-post](readme/add-post1.png)
 
 - #### User Goal
 
@@ -257,13 +258,30 @@ User Acceptance Criteria based on the user stories:
 ### My Post
 
 - Shows post Created by registered user.
-![My-POst](media/mypost.png).
+![My-POst](readme/user-added-post.png).
+
+### Edit Post
+
+![Edit-post](readme/edit-comment.png)
+![Edit](readme/edit-post1.png)
+![Edit](readme/edit-post-success-message.png)
+
+#### User Goal
+
+  > - Edit a post.
+  > - Give feedback.
+
+#### Website Goal
+
+  > - Provide aesthetically pleasing user experience.
 
 ### Delete Post Page
 
-![Delete-post]()
+![Delete-post](readme/delete-post.png)
+![Delete-post](readme/post-delete-success-message.png)
 
 - Confirms if the user wants to delete their post.
+- Gives delete post success feedback.
 - Available only for authenticated users.
 
 #### User Goal
@@ -278,18 +296,19 @@ User Acceptance Criteria based on the user stories:
 ### My Page
 
 - User profile page.
-![Profile]()
+![Profile](readme/profile.png)
 
 ### Bookmark
 
 - Shows post saved by registered user
-![Bookmark]()
+![Bookmark](readme/bookmarked.png)
+![Bookmark](readme/bookmark-success-message.png)
 
 ## Account
 
 ### Sign Up Page
 
-![signup]()
+![signup](readme/signup.png)
 
 - Allows user to sign up.
 
@@ -304,7 +323,7 @@ User Acceptance Criteria based on the user stories:
 
 ### Sign In Page
 
-![login]()
+![login](readme/signin-success-message.png)
 
 - Allows registered user to sign in
 
@@ -320,7 +339,7 @@ User Acceptance Criteria based on the user stories:
 
 ### Footer ([uac 11](#uac11), [uac 12](#uac12), [uac 20](#uac20))
 
-![Footer]()
+![Footer](readme/footer.png)
 
 The website's footer is designed to provide users with useful such as privacy policy which are important for users to be aware of as well social media link for users to follow and get more news update easy and faster.
 
@@ -384,23 +403,26 @@ The website is designed and developed with accessibility in mind: it provides al
 
 ### Navbar ([uac 3](#uac3), [uac 4](#uac4))
 
-![](readme/navbar.png)
+![Navbar](readme/navbar.png)
 
 The navbar is a key feature of the website, located at the top of the page. It also include links that aid navigation on the website. The "Registration" link provides form for new users to register and the login allows already registered users to login. The "Login" and "Register" links are used for user authentication and are only visible to unauthenticated users. Once the user logs in, they will not see these links anymore and "Log out" will be displayed instead.
 
 ### Comment field ([uac 16](#uac16))
 
-![](readme/comment.png)
+![](readme/comment-form.png)
+![](readme/user-comment.png)
 
 The form to leave a comment appears when the user opens post to read News details and toast is used to make stop user from submitting empty form. 
-![](readme/empty-comment-error.png)
 
 It is handled by JavaScript without refreshing the page. This allows for a seamless and smooth user experience, as users can leave comments without disrupting their current browsing session.
 
 It is important to note that all comments are moderated to ensure that the content is appropriate and relevant to the post. This helps to maintain a positive and respectful community and ensures that all users have a positive experience while using the website.
 
 Also, a user can edit or delete comment.
-![](readme/edit-comment.png) ![](readme/delete-your-comment.png)
+![](readme/edit-comment.png)
+![](readme/comment-edit-success-messge.png)
+![](readme/delete-comment.png)
+ ![](readme/comment-delete-success-message.png)
 
 ## Admin ([uac 5](#uac5))
 
@@ -421,14 +443,13 @@ In the project before bundling the code was compiled with Babel, a JavaScript tr
 ## **Feature considerations**
 
 1. Reply comment section is already is progress but requires more logic to make it function properly so that users can interact with each other and engange more on the post.
-![](readme/edit-comment.png)
 
 2. Translation, so that users can translate to their prefared language.
 
 3. Reporting undesirable content.
 Buttons for reporting undesirable content on a website will allow users to quickly and easily flag content that they believe is inappropriate, offensive, or violative of the website's terms of service. This allows website administrators to quickly identify and remove such content, keeping the website safe and enjoyable for all users. Additionally, reporting buttons can help to create a sense of community and shared responsibility among users, encouraging them to take an active role in maintaining the website's standards and quality.
 
-5. Buttons to share posts on social media.
+4. Buttons to share posts on social media.
 Buttons that provide the ability for users to share content on social media allow for an increase in the reach and visibility of the content. This can lead to more traffic to the website and ultimately more engagement. The buttons make it easy for users to share content with their friends and followers on social media.
 When content is shared on social media, it includes a link back to the website. This can help with branding, as it increases the visibility of the website and its content, increasing positive impact.
 
