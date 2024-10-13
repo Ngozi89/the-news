@@ -14,13 +14,13 @@ class Home(generic.TemplateView):
     template_name = "index.html"
 
 
-# Create your views here.
 class PostList(generic.ListView):
+    """ Create your views here. """
     model = Post
-# Render list of post
+    """ Render list of post """
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'browse_article.html'
-# Seperate the pages
+    """ Seperate the pages """
     paginate_by = 8
 
 
@@ -50,8 +50,9 @@ class PostDetail(View):
             },
         )            
 
-# Post comment
+
     def post(self, request, slug, *args, **kwargs):
+        """ Post comment """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -87,6 +88,7 @@ class PostDetail(View):
 
 
 class Profile(LoginRequiredMixin, generic.TemplateView):
+    """Displays login user profile view """
     model = Profile
     template_name = 'profile.html'
     
@@ -109,7 +111,6 @@ class AddArticle(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
         """
         form.instance.author = self.request.user
         return super().form_valid(form)
-
 
     def get_success_message(self, cleaned_data):
         """
@@ -178,7 +179,7 @@ class DeletePost(LoginRequiredMixin, generic.DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_message = "Post deleted successfully"
-    success_url = reverse_lazy('news')
+    success_url = reverse_lazy('home')
 
     def test_func(self):
         """
@@ -188,17 +189,8 @@ class DeletePost(LoginRequiredMixin, generic.DeleteView):
         return post.author == self.request.user
 
     def delete(self, request, *args, **kwargs):
-        """
-        Displays sucess message and cannot be used in generic.DeleteView.
-        """
         messages.success(self.request, self.success_message)
         return super(DeletePost, self).delete(request, *args, **kwargs)
-
-    def get_success_url(self):
-        """ Return to post detail view when comment replied sucessfully"""
-        post = self.object.post
-
-        return reverse_lazy('post_detail', kwargs={'slug': post.slug})
 
 
 class EditComment(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
