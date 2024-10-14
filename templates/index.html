@@ -14,15 +14,15 @@
             <div class="col-md-5 col-lg-7 hero-text-outer text-center">
                 <h1 class="mt-4 mb-2 hero-text"> Bringing you news and entertainments to your doorstep.</h1>
                 <div class="feature-image mb-2">
-                  <a class="browse-article" href="{% url 'browse_article' %}"><i class="fas fa-search fa-6x"></i></a>
+                  <a class="browse-article" href="{% url 'browse_article' %}"><i class="fas fa-search fa-5x"></i></a>
               </div>
             </div>
             {% else %}
             <div class="col-md-5 col-lg-7 hero-text-outer text-center">
                 <h1 class="mt-4 mb-2 hero-text"> Your news outlet.. create an account!</h1>
                 <div class="lead mt-4">
-                     <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
-                        href="{%  url 'account_signup' %}">Sign Up!</a>
+                     <a class="btn btn-outline-dark btn-lg ml-2 my-2 my-lg-0"
+                        href="{%  url 'account_signup' %}"></i>Sign Up!</a>
                 </div>
             </div>
             {% endif %}
@@ -33,7 +33,6 @@
     <div class="container-fluid feature-image-outer">
         <div class="row">
             <div class="col-12 col-md-4 mb-2 col-sm-4">
-              {% if user.is_authenticated %}
                 <div class="feature-image mb-2">
                     <a class="browse-post" href="{% url 'my_article' %}"><i class="fas fa-thin fa-brands fa-readme fa-2x"></i></a>
                 </div>
@@ -47,10 +46,11 @@
             <div class="col-12 col-md-4 mb-2 col-sm-4">
                 <div class="feature-image mb-2">
                     <a class=" browse-post"><i class="fas fa-user fa-2x"></i></a>
+                    {% if user.is_authenticated %}
                     <h3 class="feature-title"><a href="{%  url 'profile' user.pk %}">Profile</a></h3>
+                    {% endif %}
                     <p class="feature-text">Sign in and view your post!</p>
                 </div>
-                {% endif %}
             </div>
             <div class="col-12 col-md-4 mb-2 col-sm-4">
               <div class="feature-image mb-2">
@@ -84,4 +84,4 @@
     </div>
 </section>
 
-{%endblock%}
+{% endblock %}

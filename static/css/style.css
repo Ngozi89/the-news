@@ -42,6 +42,10 @@ body {
     height: 80px;
 }
 
+.the-news {
+    padding: 6px;
+}
+
 .content {
     min-height: calc(100vh - 90px);
 }
@@ -225,11 +229,6 @@ body {
     color: #ff0022;
 }
 
-.btn-signup {
-    background-color: #0000ff;
-    color: #fff;
-}
-
 .btn.btn-signup.right {
     background-color: #ff0022;
     color: #fff;
@@ -272,14 +271,11 @@ body {
 }
 
 .sign-out {
-    background-color: #0000ff;
+    color: #0000ff;
     display: block;
-    text-align: center;
-    color: #000;
 }
 
 /* Footer */
-
 .footer-container {
     border-top: 1px #D8B646 solid !important;
 }
