@@ -8,8 +8,8 @@ from django_extensions.db.fields import AutoSlugField
 STATUS = ((0, "Waiting"), (1, "Pulished"))
 
 
-# Create post models.
 class Post(models.Model):
+    """Create post models"""
     title = models.CharField(max_length=250, unique=True)
     slug = AutoSlugField(populate_from="title", unique=True)
     author = models.ForeignKey(
@@ -31,23 +31,24 @@ class Post(models.Model):
         ordering = ["-created_on"]
 
     def get_absolute_url(self):
-        """Get url after user add and edit post"""
+        """ Get url after user add and edit post """
         return reverse('post_detail', kwargs={'slug': self.slug})
         
-        # Add string that returns representation of an object.
+        """ Add string that returns representation of an object."""
     def __str__(self):
         return f"{self.title}"
-    
-     # Returns total number of bookmarks on a post.
+        
+        """ Returns total number of bookmarks on a post."""
     def number_of_bookmarks(self):
         return self.bookmarks.count()
         
-        # Returns total number of likes on a post.
+        """ Returns total number of likes on a post."""
     def number_of_likes(self):
         return self.likes.count()
 
 
 class Profile(models.Model):
+    """ User profile models."""
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile'
     )
@@ -60,9 +61,8 @@ class Profile(models.Model):
         return self.user.username
 
 
-# Add comment models.
 class Comment(models.Model):
-
+    """ Add comment models."""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()

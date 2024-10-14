@@ -42,6 +42,10 @@ body {
     height: 80px;
 }
 
+.content {
+    min-height: calc(100vh - 90px);
+}
+
 .hero-text-outer {
     background-color: #ff0022;
     min-height: 200px;
@@ -218,11 +222,16 @@ body {
 
 /* Sign up button .......... */
 #register {
-    color: #ff0000;
+    color: #ff0022;
 }
 
 .btn-signup {
     background-color: #0000ff;
+    color: #fff;
+}
+
+.btn.btn-signup.right {
+    background-color: #ff0022;
     color: #fff;
 }
 
