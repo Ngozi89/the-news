@@ -48,8 +48,7 @@ class PostDetail(View):
                 "liked": liked,
                 "comment_form": CommentForm()
             },
-        )            
-
+        )
 
     def post(self, request, slug, *args, **kwargs):
         """ Post comment """
@@ -91,7 +90,7 @@ class Profile(LoginRequiredMixin, generic.TemplateView):
     """Displays login user profile view """
     model = Profile
     template_name = 'profile.html'
-    
+
     def __str__(self):
         return f"Profile {self.user}by{self.bio}"
 

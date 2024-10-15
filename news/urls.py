@@ -10,12 +10,28 @@ urlpatterns = [
     path("bookmark/", views.Bookmarked.as_view(), name="bookmarked"),
     path("about/", views.about, name="about"),
     path("policy/", views.policy, name="policy"),
-    path("posts/<int:pk>/delete/", views.DeletePost.as_view(), name="delete_post"),
-    path("comments/<int:pk>/edit/", views.EditComment.as_view(), name="edit_comment"),
-    path("comments/<int:pk>/delete/", views.DeleteComment.as_view(), name="delete_comment"),
-    path("bookmarks/<slug:slug>/", views.PostBookmark.as_view(), name="post_bookmark"),
-    path("likes/<slug:slug>/", views.PostLike.as_view(), name="post_like"),
-    path("postdetail/<slug:slug>/", views.PostDetail.as_view(), name="post_detail"),
-    path("article/<slug:slug>/edit/", views.EditArticle.as_view(), name="edit_article"),
+    path(
+        "posts/<int:pk>/delete/",
+        views.DeletePost.as_view(), name="delete_post"
+        ),
+    path(
+        "comments/<int:pk>/edit/",
+        views.EditComment.as_view(), name="edit_comment"),
+    path(
+        "comments/<int:pk>/delete/",
+        views.DeleteComment.as_view(), name="delete_comment"),
+    path(
+        "bookmarks/<slug:slug>/",
+        views.PostBookmark.as_view(), name="post_bookmark"),
+    path(
+        "likes/<slug:slug>/",
+        views.PostLike.as_view(), name="post_like"),
+    path(
+        "postdetail/<slug:slug>/",
+        views.PostDetail.as_view(), name="post_detail"),
+    path(
+        "article/<slug:slug>/edit/",
+        views.EditArticle.as_view(), name="edit_article"
+        ),
     path("profile/<int:pk>/", views.Profile.as_view(), name="profile"),
 ]
