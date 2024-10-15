@@ -1,5 +1,5 @@
 # News Mix Website (Milestone Project 4)
-![mockup](readme/site-responsive.png)
+![mockup](readme/responsive.png)
 
 [News Mix](https://thenews-527458e708d0.herokuapp.com/) is an online news reporter and personal publisher dedicated to bringing you news and happening around the globe from African perspective.
 
@@ -354,9 +354,8 @@ The development of the website has followed an Agile methodology, using GitHub's
 - would have
 - could have
 
-![](readme/user-story.png)
-
-![](readme/user-stories1.png)
+![](readme/user-stories.png)
+[News Mix User Stories](https://github.com/users/Ngozi89/projects/8/views/1)
 
 # Design
 
@@ -484,10 +483,12 @@ I have tested this project code by
 - Pasting the code on PEP8 linter and no error found.
 - Tested after deployment on Code Institute Heroku terminal and it run successfully.
 
-![Models.py](readme/test-models.py.png)
-![views.py](readme/tested-views.py.png)
-![urls.py](readme/tested-urls.png)
-![admin.py](readme/tested-admin-file.png)
+![Models.py](readme/models-erro.png)
+![Models.py](readme/model.png)
+![views.py](readme/view.png)
+![urls.py](readme/urls.png)
+![admin.py](readme/admin-tested.png)
+![admin.py](readme/admin-tested.png)
 
 ### Bugs
 - Migration issue
