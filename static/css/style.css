@@ -7,7 +7,6 @@ body {
 
 .red-o {
     color: red;
-    font-size: 50px;
 }
 
 .red-text {
@@ -346,6 +345,14 @@ body {
     .post-png{
         width: 100%;
     }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+        padding: 0%;
+        margin: 0%;
+        overflow-x: hidden;
+    }
 }
 
 /* For Medium devices (tablets, less than 992px) */
@@ -357,5 +364,13 @@ body {
   
     .logo-img {
         height: 75px;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+        padding: 0%;
+        margin: 0%;
+        overflow-x: hidden;
     }
 }

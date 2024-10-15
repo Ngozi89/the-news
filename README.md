@@ -562,4 +562,4 @@ This project was deployed using Code Institute's mock terminal for Heroku and th
 - Matt Rudge for I think before I blog workthrough project.
 - Slack Overflow
 - Daily digest blog website https://github.com/Madu-J/daily-digest01 (edit and delete comment)
-- SaharaReporters for Privacy policy.
+- SaharaReporters for Privacy policy page.
